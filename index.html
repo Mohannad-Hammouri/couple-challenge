@@ -231,6 +231,74 @@ details summary::after{content:" ▾";color:var(--muted)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--surface);
   padding:10px 16px;border-radius:12px;font-weight:700;max-width:calc(100% - 32px);text-align:center;z-index:20;font-size:.95rem;box-shadow:0 8px 24px var(--shadow)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- additions: ranking, mission, pot, summary, sound ---------- */
+.rank{display:flex;flex-direction:column;gap:8px}
+.ritem{display:flex;align-items:center;gap:12px;font-family:var(--body);font-size:1.02rem;font-weight:700;text-align:start;padding:12px 14px;border-radius:16px;border:2px solid var(--line);background:var(--sunk);color:var(--ink);cursor:pointer}
+.ritem .rn{flex:none;width:30px;height:30px;border-radius:50%;border:2px dashed var(--line);display:grid;place-items:center;font-family:var(--display);font-size:1.1rem;color:var(--muted)}
+.ritem.on{border-color:var(--ink);background:var(--surface)}
+.ritem.on .rn{background:var(--ink);color:var(--surface);border:2px solid var(--ink)}
+.ritem.lie.on{border-color:var(--gold)} .ritem.lie.on .rn{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
+.rrev{display:flex;flex-direction:column;gap:6px}
+.rrev li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--sunk);border:2px solid var(--line)}
+.rrev li.ok{border-color:var(--good)} .rrev li .rn{font-family:var(--display);font-size:1.2rem;width:22px;text-align:center}
+.rrev li .gx{margin-inline-start:auto;font-size:.82rem;font-weight:800;color:var(--muted)}
+.rrev li.ok .gx{color:var(--good)}
+.rrev{list-style:none;margin:0;padding:0}
+
+.mission{border:2px dashed var(--gold);background:color-mix(in srgb,var(--gold) 10%,var(--surface));border-radius:18px;padding:12px 14px}
+.mission summary{font-size:.9rem}
+.mission p{margin-top:6px;font-weight:800}
+.mission .prog{font-size:.82rem;color:var(--muted);font-weight:700}
+.mcard{text-align:center;align-items:center;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 22%,var(--surface)),var(--surface) 60%)}
+.mcard .seal{width:74px;height:74px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;font-family:var(--display);font-size:2rem;border:4px dashed var(--gold-ink)}
+.mcard .mt{font-size:1.35rem;font-weight:800;line-height:1.45;text-wrap:balance}
+
+.potbox{display:flex;flex-direction:column;align-items:center;gap:4px}
+.stack{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;max-width:220px}
+.stack i{width:20px;height:20px;border-radius:50%;background:var(--gold);border:2px dashed var(--gold-ink)}
+.potn{font-family:var(--display);font-size:3rem;line-height:1;color:var(--gold)}
+.matrix{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.matrix li{display:flex;justify-content:space-between;gap:10px;padding:9px 12px;border-radius:12px;background:var(--sunk);font-size:.92rem}
+.matrix b{font-family:var(--display);font-weight:400;font-size:1.1rem;white-space:nowrap}
+.rep{font-size:.85rem;color:var(--muted);text-align:center}
+.rep b{color:var(--bad)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice .opt{text-align:center;font-family:var(--display);font-weight:400;font-size:1.35rem;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.choice .opt small{font-family:var(--body);font-size:.8rem;color:var(--muted);font-weight:700}
+.choice .opt.share.sel{border-color:var(--good);box-shadow:0 0 0 2px var(--good) inset;background:color-mix(in srgb,var(--good) 12%,var(--surface))}
+.choice .opt.take.sel{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad) inset;background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+
+.acc{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.acc>div{border-radius:18px;padding:14px;text-align:center;background:var(--sunk);display:flex;flex-direction:column;gap:2px;align-items:center}
+.acc .pc{font-family:var(--display);font-size:2.6rem;line-height:1}
+.acc .sub2{font-size:.82rem;color:var(--muted);font-weight:700}
+.cats2{display:flex;flex-direction:column;gap:10px}
+.crow{display:grid;grid-template-columns:5.5em 1fr;gap:10px;align-items:center}
+.crow .cl{font-weight:800;font-size:.88rem}
+.bars{display:flex;flex-direction:column;gap:4px;min-width:0}
+.br{display:flex;align-items:center;gap:8px}
+.br .track{flex:1;height:10px;border-radius:6px;background:var(--sunk);overflow:hidden;min-width:0}
+.br .fill{height:100%;border-radius:6px}
+.br .fill.p0{background:var(--p0)} .br .fill.p1{background:var(--p1)}
+.br .v{font-size:.78rem;font-weight:800;color:var(--muted);min-width:2.6em;text-align:end;font-variant-numeric:tabular-nums}
+.moments{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.moments li{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:14px;background:var(--sunk)}
+.moments .mk{font-size:.78rem;font-weight:800;color:var(--muted)}
+.titles{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.ttl{font-size:.8rem;font-weight:800;padding:3px 10px;border-radius:999px;border:2px solid currentColor}
+.mres{display:flex;flex-direction:column;gap:8px}
+.mres>div{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--sunk);border:2px solid var(--line)}
+.mres>div.ok{border-color:var(--good)}
+.mres .mtxt{font-size:.9rem}
+.potstory{display:flex;gap:6px;flex-wrap:wrap}
+.potstory span{font-size:.8rem;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--sunk);border:1.5px solid var(--line)}
+.potstory .good{border-color:var(--good);color:var(--good)} .potstory .bad{border-color:var(--bad);color:var(--bad)}
+.snd{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:.78rem;font-weight:800;color:var(--muted);background:var(--sunk);border:1.5px solid var(--line);border-radius:999px;padding:3px 10px;cursor:pointer;margin-top:4px}
+.snd svg{width:14px;height:14px;fill:currentColor}
+.snd.on{color:var(--p0);border-color:var(--p0)}
+.snd.ic{padding:5px;margin-top:2px}.mres b{white-space:nowrap}
+.fresh{font-size:.82rem;color:var(--muted);text-align:center;font-weight:700}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
@@ -458,6 +526,103 @@ const W=["بيتأخر ع المواعيد أكثر؟","بيزعل أسرع؟","
 "بيتصوّر سيلفي أكثر؟","بيصالح أحسن؟","بيخطط للطلعات؟","رح يبكي أكثر بالعرس؟","بيسرق البطانية بالليل؟","بيتصل أكثر؟","بيعرف التاني أكثر؟","رح يربح هاللعبة؟"];
 
 
+C.push(
+["us","أكثر وقت بحب نحكي فيه:",["الصبح","وقت الغدا","بالسيارة","قبل النوم"]],
+["us","إذا زعلت مني، بعرف من:",["سكوتك","ردودك القصيرة","نظرتك","ما بعرف لحالي"]],
+["us","أكثر إشي بفتخر فيه بعلاقتنا:",["صراحتنا","ضحكنا","صبرنا","إنّا بنحكي بكل إشي"]],
+["us","لو بدنا نتخانق ع إشي تافه، رح يكون:",["الريموت","وين ناكل","التكييف","مين ينام أول"]],
+["us","لما نطلع مع ناس، أنا:",["بضل جنبك","بندمج مع الكل","بستنى نروّح","بحكي عنك"]],
+["us","بآخر يوم متعب، بدي منك:",["أكل","سكوت وحضن","تضحيك","أنام وبس"]],
+["us","أحلى عادة عملناها سوا:",["قهوة الصبح","مكالمة قبل النوم","طلعة أسبوعية","لسا ما عملنا"]],
+["us","أكثر إشي بنضحك عليه سوا:",["ميمز","ناس بنعرفهم","مواقفنا القديمة","حالنا"]],
+["us","لما بدنا نقرر وين نطلع:",["أنا بقرر","إنت بتقرر","بنضل نتناقش ساعة","بنروح ع نفس المكان"]],
+["us","أكثر إشي بحس إنك بتفهمني فيه:",["مزاجي","سكوتي","أكلي","ولا إشي لسا"]],
+["mem","أول مرة شفتك حسيت:",["بتوتر","بفضول","بارتياح","ما حسيت إشي خاص"]],
+["mem","أطول مكالمة إلنا كانت:",["ساعة","3 ساعات","لحد الصبح","ما بنحكي ع التلفون كثير"]],
+["mem","أكثر طلعة ضحكنا فيها:",["أول سفرة","طلعة مع الأصحاب","عشا عادي","بالسيارة"]],
+["mem","أول مرة طبخنا سوا:",["زبطت","احترقت","طلبنا بالآخر","لسا ما صار"]],
+["mem","أول صورة إلنا سوا:",["سيلفي","حدا صوّرنا","بمناسبة","ما بتذكر"]],
+["mem","يوم بتمنى ننساه:",["أول خناقة كبيرة","موقف محرج قدام الناس","يوم ضعنا بالطريق","ما في"]],
+["mem","أول إشي حكيته عنك لأقرب حدا إلي:",["شكلك","طيبتك","خفة دمك","ما حكيت إشي"]],
+["love","أحلى وقت للمفاجأة:",["الصبح بكير","نص النهار","بالليل","بدون مناسبة"]],
+["love","أحلى إشي تناديني فيه:",["اسمي بس","لقب دلع","لقب مضحك","لسا ما في"]],
+["love","رسالة حب مكتوبة بحطها:",["بالمحفظة","بالموبايل","بصندوق ذكريات","ما بحتفظ بأشياء"]],
+["love","العطر اللي بحبه عليك:",["خفيف وفريش","ثقيل وشرقي","حلو","ما بتفرق"]],
+["love","لو بدي أكتبلك أغنية، رح تكون:",["رومانسية حزينة","مضحكة","سريعة للرقص","بدون كلام"]],
+["love","أكثر كلمة بتذوّبني:",["حبيبي","يا عمري","اشتقتلك","إنت إلي"]],
+["love","أحلى طريقة نقضي فيها يوم ماطر:",["بطانية وفيلم","مشي بالمطر","قهوة ع الشباك","نطبخ سوا"]],
+["future","أول إشي بنشتريه للبيت:",["كنباية مريحة","تلفزيون كبير","ماكينة قهوة","تخت"]],
+["future","بالسنة الجاية بدي نعمل سوا:",["سفرة","هواية جديدة","نوفّر","ننظّم حياتنا"]],
+["future","رح نعيش قريب من:",["أهلي","أهلك","بالنص","بعاد عن الكل"]],
+["future","هواية بدي نتعلمها سوا:",["طبخ","رقص","رياضة","لغة"]],
+["future","يوم الجمعة بالمستقبل:",["غدا عيلة","نوم للظهر","طلعة طبيعة","مشاريع بالبيت"]],
+["future","لو فتحنا مشروع سوا:",["كافيه","متجر أونلاين","مطعم","محتوى ع السوشال"]],
+["future","رح نكون أهل:",["صارمين","دلّوعين","متوازنين","فوضى"]],
+["habit","أول إشي بعمله لما أوصل البيت:",["بشلح وبنام","بفتح الثلاجة","بتحمم","بمسك الموبايل"]],
+["habit","المسجات عندي:",["برد فورًا","بقرأ وبنسى","برد عليهم كلهم بالليل","برد بفويس نوت"]],
+["habit","بالويكند بصحى:",["بنفس الوقت","الظهر","بعد العصر","ما بنام أصلًا"]],
+["habit","الموسيقى بسمعها:",["دايمًا","بالسيارة بس","وقت الشغل","نادرًا"]],
+["food","أكلة بتذكرني بالبيت:",["مقلوبة","منسف","ورق دوالي","ملوخية"]],
+["food","ع المشاوي أنا:",["اللي بيشوي","اللي بياكل","اللي بيعمل السلطة","اللي بينظّف"]],
+["food","مشروبي بالصيف:",["ليمون ونعنع","قهوة مثلجة","مي بس","عصير"]],
+["food","أكلة بحاول أطبخها وبتفشل:",["الرز","الحلو","المعجنات","كل إشي"]],
+["pers","لما أفرح كثير:",["بغني","بحكي كثير","بصير لطيف مع الكل","ما بيبين"]],
+["pers","بالسيارة لما حدا يقطع عليّ:",["بزمّر","بسبّ بقلبي","بضحك","ما بنتبه"]],
+["pers","الصفة اللي بحبها بحالي:",["الطيبة","العناد","الضحكة","الذكاء"]],
+["pers","الصفة اللي بدي أغيّرها بحالي:",["العصبية","التأجيل","الحساسية","التفكير الزايد"]],
+["pers","إذا حدا جرحني:",["بواجه","بسكت وبزعل","بقطع","بسامح بسرعة"]],
+["conf","آخر إشي اشتريته وما احتجته:",["لبس","أداة مطبخ","إلكترونيات","أكل"]],
+["conf","بعمل حالي فاهم وأنا مش فاهم وقت:",["الشغل","حكي السياسة","حكي الأكل","كل يوم"]],
+["conf","أكثر إشي بكذب فيه ع حالي:",["رح أنام بكير","رح أبلّش دايت","رح أوفّر","رح أرد بعدين"]],
+["conf","آخر مرة غنيت بصوت عالي كانت:",["اليوم","هالأسبوع","من زمان","ما بغني أبدًا"]],
+["hard","شهر بدون إنترنت ولا شهر بدون أصحاب؟",["بدون إنترنت","بدون أصحاب"]],
+["hard","رحلة فخمة يوم ولا رحلة عادية أسبوع؟",["فخمة يوم","عادية أسبوع"]],
+["hard","أكون مشهور ولا غني بالسر؟",["مشهور","غني بالسر"]],
+["hard","أعرف كل اللغات ولا أعزف ع كل الآلات؟",["كل اللغات","كل الآلات"]],
+["hard","بيت بدون مطبخ ولا بدون تلفزيون؟",["بدون مطبخ","بدون تلفزيون"]],
+["hard","أصحى كل يوم 5 الصبح ولا أنام كل يوم 3 الفجر؟",["5 الصبح","3 الفجر"]],
+["bold","أكثر إشي بخاف تعرفه عني:",["عاداتي الغريبة","ماضيّ","أفكاري","ما في إشي"]],
+["bold","لو قرأت سجل البحث عندي، رح يكون فيه:",["إشي عادي","ضحك","صدمة","مش رح أسمحلك"]],
+["bold","أكثر مرة غرت فيها كانت بسبب:",["حدا من الشغل","حدا من الماضي","صاحب أو صاحبة","مشهور"]],
+["bold","بقارنك بحدا؟",["أبدًا","أحيانًا بقلبي","بأهلي","بحدا من الماضي"]],
+["bold","في إشي بدي أعتذرلك عنه من زمان:",["في إشي","أكثر من إشي","لا","هلّق؟"]]
+);
+N.push(
+["من 10، قديش بحب أعرف تفاصيل يومك؟",0,10,1,1,"من 10"],
+["كم مرة ضحكت اليوم؟",0,50,1,3,"مرة"],
+["من 10، قديش أنا شخص ليلي؟",0,10,1,1,"من 10"],
+["كم دقيقة بحتاج لأنام بعد ما أحط راسي؟",0,90,5,10,"دقيقة"],
+["من 10، قديش بحب الأفلام الرومانسية؟",0,10,1,1,"من 10"],
+["من 10، قديش بخاف من المستقبل؟",0,10,1,1,"من 10"],
+["كم مرة بالشهر بدي نطلع ع عشا؟",0,30,1,2,"مرة"],
+["من 10، قديش بحب أرقص؟",0,10,1,1,"من 10"],
+["كم ساعة بدي نقضي سوا باليوم المثالي؟",0,24,1,2,"ساعة"],
+["من 10، قديش بنسى بسرعة بعد الزعل؟",0,10,1,1,"من 10"],
+["كم مرة بقلّب صورنا بالأسبوع؟",0,30,1,2,"مرة"],
+["من 10، عنادي قديش؟",0,10,1,1,"من 10"]
+);
+W.push("رح ينسى ذكرى ارتباطنا أول؟","بيعرف أسرار أكثر؟","بيحب الحلو أكثر؟","بيصرخ بأفلام الرعب؟","رح يتعلم طبخة جديدة أول؟","بيعرف يهدّي التاني أحسن؟",
+"بيغني أكثر بالسيارة؟","بيقرر أسرع؟","بيسهر أكثر؟","بيحب المفاجآت أكثر؟","رح يبكي بلعبة كهاي؟","بيعطي هدايا أحلى؟","بيعرف يقول «آسف» أحسن؟",
+"رح يشتري إشي ما بيلزم هالأسبوع؟","بيتأخر بالرد ع المسجات؟","بيخاف ع التاني أكثر؟","بينظّف أكثر؟","بيحب السفر أكثر؟","اجتماعي أكثر؟",
+"بيعرف يدير المصاري أحسن؟","بيربح النقاشات أكثر؟","بيحب الصور أكثر؟");
+const K=[
+["طلعاتي المفضّلة",["سينما","مطعم","بحر","مول"]],["الويكند المثالي",["نوم","أكل","طلعة","مسلسل"]],["أهم إشي بالعلاقة",["الثقة","الضحك","الاهتمام","الصراحة"]],
+["الأكلات",["منسف","شاورما","بيتزا","سوشي"]],["الحلويات",["كنافة","شوكولاتة","آيس كريم","تشيز كيك"]],["الفصول",["صيف","شتا","ربيع","خريف"]],
+["الهدايا",["ورد","عطر","إشي معمول باليد","تجربة"]],["طرق التواصل",["مكالمة","مسج","فويس","فيديو"]],["السفرات",["بحر","جبل","مدينة","صحرا"]],
+["المشروبات",["قهوة","شاي","عصير","مي"]],["أنواع الأفلام",["كوميدي","رعب","رومانسي","أكشن"]],["شو بيطمّنّي",["حضن","كلمة حلوة","وجودك","رسالة"]],
+["أهم مكان بالبيت",["المطبخ","غرفة النوم","البلكونة","الصالون"]],["أكثر إشي بيعصّبني",["التأخير","الكذب","الإهمال","الصوت العالي"]],["أكثر إشي بشتاقلك فيه",["صوتك","ضحكتك","ريحتك","حكيك"]],
+["الحيوانات",["قطة","كلب","حصان","دلفين"]],["التطبيقات",["واتساب","إنستغرام","تيك توك","يوتيوب"]],["أوقات النهار",["الصبح","الظهر","المغرب","الليل"]],
+["بطلعة الأصحاب بحب",["السوالف","الأكل","الألعاب","التصوير"]],["أولوياتي",["العيلة","الشغل","الأصحاب","الراحة"]],["ليلة الجمعة",["فيلم","عزومة","طلعة","نوم بكير"]],
+["أصعب إشي عليّ",["أعتذر","أطلب مساعدة","أقول لا","أعترف إني غلطان"]],["الألوان",["أسود","أبيض","أزرق","أحمر"]],["بدي نعمل أكثر",["سفر","حكي","رياضة","طبخ سوا"]],
+["بصرف أكثر على",["أكل","لبس","سفر","هدايا"]],["أحلى إشي فيك",["عيونك","ضحكتك","قلبك","عقلك"]],["الهوايات",["قراءة","رياضة","ألعاب فيديو","طبخ"]],
+["بالمطعم بختار",["مشاوي","معجنات","باستا","سلطات"]],["أكثر إشي بخاف منه",["الوحدة","الفشل","المرض","الملل"]],["أحلى طريقة اعتذار",["كلمة آسف","هدية","حضن","فعل بيصلّح"]],
+["بحب أسمع منك",["بحبك","فخور فيك","اشتقتلك","معك حق"]],["البلدان",["إيطاليا","اليابان","تركيا","فرنسا"]],["بالعرس بحب",["الدبكة","الأكل","اللبس","الزفة"]],
+["أكثر إشي بيريحني",["نوم","حمام دافي","مشي","حكي معك"]],["أحلى أوقاتنا",["الصبحيات","السهرات","السفرات","الطريق بالسيارة"]],["صفات بدي إياها بولادنا",["الطيبة","الذكاء","الشجاعة","خفة الدم"]],
+["المهم بالبيت المستقبلي",["المساحة","الموقع","الإطلالة","السعر"]],["أكثر إشي بنختلف عليه",["المصاري","الوقت","الأكل","الأهل"]],["المناسبات",["عيد ميلادي","ذكرانا","رأس السنة","العيد"]],
+["الأكلات الشعبية",["فلافل","حمص","فول","مسبحة"]],["شو بحب بالمطر",["الصوت","الريحة","المشي فيه","القعدة جوّا"]],["أكثر إشي بيضحكني",["مقالب","ميمز","مواقف حقيقية","تقليد ناس"]],
+["بالسيارة بفضّل",["أغاني","بودكاست","سوالف","سكوت"]],["بحب أشاركك",["أكل","أسرار","أغاني","تفاصيل يومي"]],["الرياضات",["مشي","سباحة","جيم","يوغا"]]
+];
+
 /* ================= helpers ================= */
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -473,42 +638,75 @@ function qOf(r){
   const t=r.qid[0],i=+r.qid.slice(1);
   if(t==='c'){const x=C[i];return {t:'c',cat:x[0],q:x[1],o:x[2]};}
   if(t==='n'){const x=N[i];return {t:'n',cat:'num',q:x[0],min:x[1],max:x[2],step:x[3],tol:x[4],u:x[5]};}
+  if(t==='k'){const x=K[i];return {t:'k',cat:'rank',q:x[0]+' (من الأكثر للأقل)',o:x[1]};}
   return {t:'w',cat:'who',q:"مين فينا "+W[i]};
 }
-const catLabel=q=>q.cat==='custom'?'سؤال خاص':q.cat==='num'?'أرقام':q.cat==='who'?'مع بعض: مين فينا؟':CATS[q.cat];
+const CATX={custom:'سؤال خاص',num:'أرقام',rank:'ترتيب',who:'مين فينا؟'};
+const catName=k=>CATX[k]||CATS[k]||k;
+const catLabel=q=>q.cat==='who'?'مع بعض: مين فينا؟':q.cat==='rank'?'رتّب':catName(q.cat);
 const near=(q,a,b)=>Math.abs(a-b)<=q.tol+1e-9;
 const midv=q=>Math.round(((q.min+q.max)/2)/q.step)*q.step;
-const fmt=(q,v)=>q.t==='n'?`${v} ${q.u}`:q.o[v];
+const fmt=(q,v)=>q.t==='n'?`${v} ${q.u}`:q.t==='k'?v.map((x,j)=>`${j+1}. ${q.o[x]}`).join('  '):q.o[v];
+const fmtHint=(q,v)=>q.t==='k'?`أول إشي عندي ${q.o[v]}`:`جوابي ${fmt(q,v)}`;
 const isFinal=g=>g.round>=g.total-2;
 const chipsOf=g=>isFinal(g)?[2,4,6,8,10]:[1,2,3,4,5];
+const ALLQ=()=>C.length+N.length+W.length+K.length;
 
-/* ================= deck: every 3rd round both answer together ================= */
+/* ================= deck ================= */
+// each block of 3: one choice, then a ranking or number question, then both answer together. Last 2 rounds: choice (double bets).
 function roundType(i,total){
   if(i>=total-2) return 'c';
-  const pos=i%3, triple=Math.floor(i/3);
+  const pos=i%3, tr=Math.floor(i/3);
   if(pos===2) return 'w';
-  if(pos===1&&triple%2===1) return 'n';
+  if(pos===1) return tr%2===0?'k':'n';
   return 'c';
 }
+const isPotAfter=(i,total)=>(i===4||i===10||i===16)&&i<total-2;
+function markSeen(ids){const s=new Set(store.get('tam-seen',[]));ids.forEach(x=>s.add(x));store.set('tam-seen',[...s]);}
 function buildDeck(total,cats){
   const seen=new Set(store.get('tam-seen',[]));
   const order=(prefix,idxs)=>{const ids=idxs.map(i=>prefix+i);const f=shuffle(ids.filter(x=>!seen.has(x))),o=shuffle(ids.filter(x=>seen.has(x)));
-    if(f.length<10) ids.forEach(x=>seen.delete(x)); return f.concat(o);};
+    if(f.length<12){ids.forEach(x=>seen.delete(x));} return f.concat(o);};
   let cIdx=C.map((_,i)=>i).filter(i=>cats.includes(C[i][0])); if(cIdx.length<total) cIdx=C.map((_,i)=>i);
-  const pools={c:order('c',cIdx),n:order('n',N.map((_,i)=>i)),w:order('w',W.map((_,i)=>i))};
+  const pools={c:order('c',cIdx),n:order('n',N.map((_,i)=>i)),w:order('w',W.map((_,i)=>i)),k:order('k',K.map((_,i)=>i))};
   const deck=[]; for(let i=0;i<total;i++) deck.push(pools[roundType(i,total)].shift());
-  deck.forEach(x=>seen.add(x)); store.set('tam-seen',[...seen]);
+  store.set('tam-seen',[...seen]); markSeen(deck);
   return deck;
+}
+
+/* ================= missions ================= */
+const MISSIONS=[
+ {t:'اربح رهانين بقيمة 5 أو أكثر',k:'bigWins',n:2},
+ {t:'اخدع شريكك بكرت الكذب',k:'lieWins',n:1},
+ {t:'تحدّى شريكك مرتين ويطلع تخمينه غلط',k:'challengeWins',n:2},
+ {t:'خلّي شريكك يخسر 8 نقاط أو أكثر وهو بيخمّن عنك',k:'partnerLoss',n:8},
+ {t:'اتفقوا بجولتين «مين فينا»',k:'whoAgree',n:2},
+ {t:'خمّن رقم بالزبط',k:'exact',n:1},
+ {t:'اعمل سلسلة 3 تخمينات صح ورا بعض',k:'streak3',n:1},
+ {t:'اقبل تحدّي واربحه',k:'acceptWins',n:1},
+ {t:'خلّي شريكك ينسحب من تحدّيك',k:'retreats',n:1},
+ {t:'اعطي تلميح صادق مرتين وشريكك يجاوب صح',k:'trueHelps',n:2},
+ {t:'رتّب ترتيب كامل صح',k:'rankPerfect',n:1},
+ {t:'خذ الصندوق المشترك لحالك مرة',k:'potSteals',n:1},
+ {t:'اتقاسموا الصندوق كل مرة، وإنت ما تطمع ولا مرة',k:'loyal',n:1}
+];
+const STAT0=()=>({bigWins:0,lieWins:0,challengeWins:0,partnerLoss:0,whoAgree:0,exact:0,streak3:0,acceptWins:0,retreats:0,trueHelps:0,rankPerfect:0,potSteals:0,potShares:0,betray:0,guesses:0,correct:0,betSum:0});
+function mProgress(g,i){
+  const m=MISSIONS[g.missions[i]],s=g.stats[i];
+  if(m.k==='loyal'){const ok=g.potCount>0&&s.potShares===g.potCount&&s.betray===0;return {v:ok?1:0,n:1,done:ok};}
+  const v=s[m.k]||0;return {v:Math.min(v,m.n),n:m.n,done:v>=m.n};
 }
 
 /* ================= game logic ================= */
 function newGame(names,total,cats,prize,starter){
+  const ms=shuffle(MISSIONS.map((_,i)=>i));
   const g={status:'play',total,cats,prize:prize||'',deck:buildDeck(total,cats),round:0,starter:starter||0,
-    players:names.map(n=>({name:n,score:0,lies:1,streak:0,custom:1})),phase:null,r:null,who:null};
-  startRound(g); return g;
+    players:names.map(n=>({name:n,score:0,lies:1,streak:0,custom:1})),stats:[STAT0(),STAT0()],missions:[ms[0],ms[1]],missionDone:[false,false],
+    log:[],potCount:0,potTrust:0,potDone:[],phase:'mission',ready:{p0:null,p1:null},r:null,who:null,pot:null};
+  return g;
 }
 function startRound(g){
-  const id=g.deck[g.round]; g.who=null;
+  const id=g.deck[g.round]; g.who=null; g.pot=null;
   if(id[0]==='w'){g.phase='who';g.r={qid:id};g.who={p0:null,p1:null};return;}
   let k=0;for(let i=0;i<g.round;i++) if(g.deck[i][0]!=='w') k++;
   const A=(k+g.starter)%2;
@@ -516,60 +714,153 @@ function startRound(g){
   g.r={qid:id,answerer:A,guesser:1-A,truth:null,hint:'none',shown:null,guess:null,bet:null,challenged:null,accepted:null,result:null,custom:null};
 }
 function resolve(g){
-  const r=g.r,q=qOf(r),A=r.answerer,Gi=r.guesser,P=g.players,ch=chipsOf(g),lines=[];
+  const r=g.r,q=qOf(r),A=r.answerer,Gi=r.guesser,P=g.players,S=g.stats,ch=chipsOf(g),lines=[];
   const base=r.accepted===false?ch[0]:r.bet, mult=r.accepted?2:1, stake=base*mult;
-  let correct,exact,gp;
-  if(q.t==='n'){exact=r.guess===r.truth;correct=exact||near(q,r.guess,r.truth);gp=exact?2*stake:correct?stake:-stake;}
-  else{correct=r.guess===r.truth;exact=correct;gp=correct?stake:-stake;}
-  let why=correct?(q.t==='n'?(exact?'الرقم بالزبط! ×2':`قريب (ضمن ±${q.tol})`):'تخمين صح'):'تخمين غلط';
+  let correct,exact,gp,why,m=null;
+  if(q.t==='n'){exact=r.guess===r.truth;correct=exact||near(q,r.guess,r.truth);gp=exact?2*stake:correct?stake:-stake;why=correct?(exact?'الرقم بالزبط! ×2':`قريب (ضمن ±${q.tol})`):'بعيد';}
+  else if(q.t==='k'){m=r.guess.filter((x,j)=>x===r.truth[j]).length;exact=m===4;correct=m>=2;gp=m===4?2*stake:m===2?stake:m===1?0:-stake;why=m===4?'الترتيب كامل! ×2':`${m} من 4 بمكانهم`;}
+  else{correct=r.guess===r.truth;exact=correct;gp=correct?stake:-stake;why=correct?'تخمين صح':'تخمين غلط';}
   if(r.accepted) why+=' · قبل التحدّي ×2'; else if(r.accepted===false) why+=` · انسحب، الرهان صار ${ch[0]}`;
   lines.push({p:Gi,pts:gp,why}); P[Gi].score+=gp;
-  if(correct){P[Gi].streak=(P[Gi].streak||0)+1;if(P[Gi].streak>=3){P[Gi].score+=3;P[Gi].streak=0;lines.push({p:Gi,pts:3,why:'سلسلة: 3 صح ورا بعض'});}}
+  const sg=S[Gi],sa=S[A];
+  sg.guesses++; sg.betSum+=r.bet; if(correct) sg.correct++;
+  if(correct&&r.bet>=5) sg.bigWins++;
+  if(gp<0) sa.partnerLoss+=-gp;
+  if(q.t==='n'&&exact) sg.exact++;
+  if(q.t==='k'&&m===4) sg.rankPerfect++;
+  if(r.challenged&&!correct) sa.challengeWins++;
+  if(r.accepted&&correct) sg.acceptWins++;
+  if(r.accepted===false) sa.retreats++;
+  if(correct){P[Gi].streak=(P[Gi].streak||0)+1;if(P[Gi].streak>=3){P[Gi].score+=3;P[Gi].streak=0;sg.streak3++;lines.push({p:Gi,pts:3,why:'سلسلة: 3 صح ورا بعض'});}}
   else P[Gi].streak=0;
+  let fooled=false;
   if(r.hint==='lie'){
     P[A].lies=Math.max(0,P[A].lies-1);
-    const fooled=!correct&&(q.t==='n'?near(q,r.guess,r.shown):r.guess===r.shown);
-    if(fooled){P[A].score+=stake;lines.push({p:A,pts:stake,why:'انخدع بكرت الكذب'});}
+    fooled=!correct&&(q.t==='n'?near(q,r.guess,r.shown):q.t==='k'?r.guess[0]===r.shown:r.guess===r.shown);
+    if(fooled){P[A].score+=stake;sa.lieWins++;lines.push({p:A,pts:stake,why:'انخدع بكرت الكذب'});}
     else lines.push({p:A,pts:0,why:'كرت الكذب ما زبط'});
-  } else if(r.hint==='true'&&correct){P[A].score+=1;lines.push({p:A,pts:1,why:'مكافأة الصراحة'});}
-  r.result={correct,exact,lines}; g.phase='reveal';
+  } else if(r.hint==='true'&&correct){P[A].score+=1;sa.trueHelps++;lines.push({p:A,pts:1,why:'مكافأة الصراحة'});}
+  r.result={correct,exact,m,lines};
+  g.log.push({t:q.t,cat:q.cat,q:q.q,g:Gi,a:A,ok:correct,pts:gp,lie:fooled,ch:!!r.challenged});
+  g.phase='reveal';
 }
 function resolveWho(g){
   const a=g.who.p0,b=g.who.p1,agree=a.pick===b.pick,lines=[];
-  [a,b].forEach((x,i)=>{const pts=agree?x.bet:-x.bet;g.players[i].score+=pts;lines.push({p:i,pts,why:agree?'اتفقتوا':'اختلفتوا'});});
-  g.r.result={agree,lines}; g.phase='reveal';
+  [a,b].forEach((x,i)=>{const pts=agree?x.bet:-x.bet;g.players[i].score+=pts;if(agree)g.stats[i].whoAgree++;lines.push({p:i,pts,why:agree?'اتفقتوا':'اختلفتوا'});});
+  g.r.result={agree,lines}; g.log.push({t:'w',q:qOf(g.r).q,agree}); g.phase='reveal';
 }
-function nextRound(g){ g.round++; if(g.round>=g.total){g.phase='end';g.status='end';} else startRound(g); }
+const potSize=g=>4+3*g.potTrust;
+function startPot(g){ g.phase='pot'; g.pot={p0:null,p1:null,size:potSize(g)}; }
+function resolvePot(g){
+  const P=g.pot.size, c=[g.pot.p0,g.pot.p1], lines=[]; let kind;
+  if(c[0]==='share'&&c[1]==='share'){kind='trust';[0,1].forEach(i=>{g.players[i].score+=P;g.stats[i].potShares++;lines.push({p:i,pts:P,why:'ثقة متبادلة'});});g.potTrust++;}
+  else if(c[0]==='take'&&c[1]==='take'){kind='greed';[0,1].forEach(i=>{g.players[i].score-=P;lines.push({p:i,pts:-P,why:'الاثنين طمعوا'});});g.potTrust=0;}
+  else{kind='betray';const t=c[0]==='take'?0:1,win=Math.round(P*1.5);g.players[t].score+=win;g.stats[t].potSteals++;g.stats[t].betray++;
+    lines.push({p:t,pts:win,why:'أخذ الصندوق لحاله'});lines.push({p:1-t,pts:0,why:'وثق وانخدع'});g.potTrust=0;}
+  g.potCount++; g.pot.result={kind,lines}; g.log.push({t:'p',c,kind,P}); g.phase='potReveal';
+}
+function nextRound(g){
+  if(g.phase==='reveal'&&isPotAfter(g.round,g.total)&&!g.potDone.includes(g.round)){startPot(g);return;}
+  if(g.phase==='potReveal') g.potDone.push(g.round);
+  g.round++;
+  if(g.round>=g.total){
+    [0,1].forEach(i=>{const d=mProgress(g,i).done;g.missionDone[i]=d;if(d) g.players[i].score+=10;});
+    g.phase='end';g.status='end';
+  } else startRound(g);
+}
+const SIM={mission:'ready',who:'who',pot:'pot'};
+const FIN={mission:g=>startRound(g),who:resolveWho,pot:resolvePot};
+
+/* ================= sound: generative lounge music + small effects ================= */
+const AU={ctx:null,on:store.get('tam-sound',true),timer:null,next:0,bar:0};
+function auInit(){
+  if(AU.ctx) return true; const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+  try{
+    const c=new AC(); AU.ctx=c;
+    AU.master=c.createGain(); AU.master.gain.value=0; AU.master.connect(c.destination);
+    const len=Math.floor(c.sampleRate*2.6),buf=c.createBuffer(2,len,c.sampleRate);
+    for(let ch=0;ch<2;ch++){const d=buf.getChannelData(ch);for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.8);}
+    const conv=c.createConvolver(); conv.buffer=buf; const wet=c.createGain(); wet.gain.value=.5; conv.connect(wet); wet.connect(AU.master);
+    AU.bus=c.createGain(); AU.bus.connect(AU.master); AU.bus.connect(conv);
+    AU.fx=c.createGain(); AU.fx.gain.value=.55; AU.fx.connect(c.destination);
+    return true;
+  }catch(e){return false;}
+}
+const mtof=m=>440*Math.pow(2,(m-69)/12);
+function tone(m,t,dur,type,vol,dest,cut,att){
+  const c=AU.ctx,o=c.createOscillator(),g=c.createGain(),f=c.createBiquadFilter();
+  o.type=type;o.frequency.value=mtof(m);f.type='lowpass';f.frequency.value=cut||2200;
+  g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(vol,t+(att||.01));g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(f);f.connect(g);g.connect(dest);o.start(t);o.stop(t+dur+.05);
+}
+const PROG=[[50,57,60,64,69],[43,53,59,62,64],[48,55,59,64,67],[45,55,60,64,67]]; // Dm9 · G13 · Cmaj9 · Am7
+const BEAT=60/66;
+function schedule(){
+  const c=AU.ctx;
+  while(AU.next<c.currentTime+1.5){
+    const t=AU.next,ch=PROG[AU.bar%4];
+    ch.slice(1,4).forEach(m=>{tone(m,t,BEAT*4+1.4,'triangle',.03,AU.bus,850,1.2);tone(m+12,t,BEAT*4+1,'sine',.01,AU.bus,1600,1.4);});
+    tone(ch[0]-12,t,BEAT*2.2,'sine',.08,AU.bus,380,.05); tone(ch[0]-5,t+BEAT*2,BEAT*2,'sine',.05,AU.bus,380,.05);
+    const sc=[ch[1]+12,ch[2]+12,ch[3]+12,ch[4]+12,ch[2]+24];
+    for(let s=0;s<8;s++) if(Math.random()<.34) tone(sc[Math.floor(Math.random()*sc.length)],t+s*BEAT/2+(s%2?.04:0),1.6,'sine',.045,AU.bus,3000,.005);
+    AU.next+=BEAT*4; AU.bar++;
+  }
+}
+function musicOn(){
+  if(!auInit()) return; const c=AU.ctx; if(c.state==='suspended') c.resume();
+  if(!AU.timer){AU.next=c.currentTime+.15;schedule();AU.timer=setInterval(schedule,300);}
+  AU.master.gain.cancelScheduledValues(c.currentTime); AU.master.gain.setTargetAtTime(.6,c.currentTime,1);
+}
+function musicOff(){ if(!AU.ctx) return; const c=AU.ctx; AU.master.gain.cancelScheduledValues(c.currentTime); AU.master.gain.setTargetAtTime(0,c.currentTime,.25); clearInterval(AU.timer); AU.timer=null; }
+function sfx(k){
+  if(!AU.on||!auInit()) return; const c=AU.ctx; if(c.state==='suspended') c.resume(); const t=c.currentTime+.01, d=AU.fx;
+  const seq=(ns,gap,type,vol,dur)=>ns.forEach((m,i)=>tone(m,t+i*gap,dur||.5,type||'sine',vol||.12,d,4000,.005));
+  if(k==='tick') seq([88],0,'sine',.06,.12);
+  else if(k==='tap') seq([76],0,'triangle',.08,.15);
+  else if(k==='good') seq([72,76,79,84],.08,'triangle',.11,.7);
+  else if(k==='mid') seq([72,77],.12,'triangle',.1,.6);
+  else if(k==='bad') seq([67,63,58],.14,'triangle',.11,.6);
+  else if(k==='turn') seq([79,84],.12,'sine',.1,.5);
+  else if(k==='win') seq([72,76,79,84,88,91],.1,'triangle',.12,1.1);
+  else if(k==='coins') seq([96,91,96,100],.06,'square',.03,.18);
+}
+document.addEventListener('pointerdown',()=>{ if(AU.on&&(!AU.timer||(AU.ctx&&AU.ctx.state!=='running'))) musicOn(); },true);
+document.addEventListener('visibilitychange',()=>{ if(!AU.ctx) return; if(document.hidden) AU.ctx.suspend(); else if(AU.on) AU.ctx.resume(); });
+const sndBtn=(ic)=>`<button type="button" class="snd${AU.on?' on':''}${ic?' ic':''}" data-act="sound" aria-label="الموسيقى"><svg viewBox="0 0 24 24" aria-hidden="true">${AU.on?'<path d="M9 18V5l11-2v13a3 3 0 1 1-2-2.83V7.4l-7 1.3V18a3 3 0 1 1-2-2.83z"/>':'<path d="M9 18V5l11-2v13a3 3 0 1 1-2-2.83V7.4l-7 1.3V18a3 3 0 1 1-2-2.83zM3 3l18 18-1.4 1.4L1.6 4.4z"/>'}</svg>${ic?'':(AU.on?'الموسيقى شغّالة':'الموسيقى مطفية')}</button>`;
 
 /* ================= runtime ================= */
-let MODE='local', G=null, ME=null, VIEW='home', CONN=null;
-let D={key:null}, localSeen='';
-let db=null, ONLINE=null; // 'db' | 'peer' | null
-const NET={send(){},sendWho(){},close(){},reconnect:null};
+let MODE='local',G=null,ME=null,VIEW='home',CONN=null;
+let D={key:null},localSeen='',lastFxKey='';
+let db=null,ONLINE=null;
+const NET={send(){},patch(){},close(){},reconnect:null};
 const cfg=Object.assign({tab:'local',names:['',''],myName:'',total:15,cats:Object.keys(CATS),prize:'',code:''},store.get('tam-cfg',{}));
 cfg.cats=(cfg.cats||[]).filter(k=>CATS[k]); if(!cfg.cats.length) cfg.cats=Object.keys(CATS);
 const saveCfg=()=>store.set('tam-cfg',{tab:cfg.tab,names:cfg.names,myName:cfg.myName,total:cfg.total,cats:cfg.cats,prize:cfg.prize});
 const P=i=>G.players[i];
 const nm=i=>`<span class="c${i}">${esc(P(i).name)}</span>`;
-const av=i=>`<span class="av p${i}">${esc((P(i).name||'؟').trim().slice(0,1))}</span>`;
+const av=(i,st)=>`<span class="av p${i}"${st?` style="${st}"`:''}>${esc((P(i).name||'؟').trim().slice(0,1))}</span>`;
 const mine=i=>MODE==='local'||ME===i;
 
 function persist(){ if(MODE==='online'&&G) store.set('tam-online',{kind:ONLINE,code:G.code,me:ME,g:G}); }
 function commit(next){ G=next; persist(); render(); if(MODE==='online') NET.send(clone(G)); }
 function act(fn){ const n=clone(G); fn(n); commit(n); }
-function receive(g){ G=g; persist(); if(VIEW==='game') render(); }
+let seenCode='';
+function receive(g){ G=g; if(g.code&&g.deck&&seenCode!==g.code+g.deck[0]){seenCode=g.code+g.deck[0];markSeen(g.deck);} persist(); if(VIEW==='game') render(); }
 function setConn(v){ CONN=v; if(VIEW==='game') topBar(); }
+function submitSim(phase,i,val){
+  const key=SIM[phase], other=G[key]['p'+(1-i)];
+  if(MODE==='local'||other) act(g=>{g[key]['p'+i]=val; if(g[key].p0&&g[key].p1) FIN[phase](g);});
+  else { G[key]['p'+i]=val; persist(); render(); NET.patch(key,i,val); }
+}
 
 /* ---------- transport: Claude artifact db ---------- */
 let wq=Promise.resolve();
 const queue=fn=>{wq=wq.then(fn).catch(e=>toast(e&&e.code==='invalid_argument'?'ما في صلاحية تعدّل اللعبة. لازم تنشارك الصفحة معك كمحرّر.':'صار خلل بالاتصال. جرّب كمان مرة.'));};
 function dbStart(code,initial){
-  let existed=false,last='',unsub=null;
-  const ref=db.doc('games/'+code);
+  let existed=false,last='',unsub=null; const ref=db.doc('games/'+code);
   NET.send=g=>queue(()=>ref.set(g));
-  NET.sendWho=(i,v)=>queue(()=>ref.update({who:{['p'+i]:v}}));
-  NET.close=()=>{if(unsub)unsub();};
-  NET.reconnect=null;
+  NET.patch=(k,i,v)=>queue(()=>ref.update({[k]:{['p'+i]:v}}));
+  NET.close=()=>{if(unsub)unsub();}; NET.reconnect=null;
   if(initial) NET.send(clone(initial));
   unsub=ref.onSnapshot(s=>{
     if(!s.exists){if(existed){toast('اللعبة انلغت.');goHome();}return;}
@@ -581,20 +872,19 @@ async function dbJoin(code,name){
   const s=await db.doc('games/'+code).get();
   if(!s.exists){toast('ما لقينا لعبة بهالكود.');return;}
   const g=clone(s.data());
-  if(g.players[1]){toast('اللعبة فيها لاعبين. إذا إنت منهم، اضغط «كمل اللعبة».');return;}
+  if(g.players[1]){toast('اللعبة فيها لاعبين. إذا إنت منهم، اضغط «كمل».');return;}
   g.players[1]={name,score:0,lies:1,streak:0,custom:1}; g.status='play';
-  MODE='online';ME=1;G=g;VIEW='game';persist();render();dbStart(code,g);
+  MODE='online';ME=1;VIEW='game';receive(g);dbStart(code,g);
 }
 
 /* ---------- transport: PeerJS (GitHub Pages / any static host) ---------- */
 const PID=c=>'tarahen-aleyya-'+c;
+const NETERR=['network','server-error','socket-error','socket-closed'];
 function peerHost(code,tries){
-  tries=tries||0; let conn=null;
-  const peer=new Peer(PID(code));
+  tries=tries||0; let conn=null; const peer=new Peer(PID(code));
   NET.send=g=>{if(conn&&conn.open) conn.send({t:'state',g});};
-  NET.sendWho=(i,v)=>{if(conn&&conn.open) conn.send({t:'who',i,v});};
-  NET.close=()=>{try{peer.destroy();}catch(e){}};
-  NET.reconnect=null;
+  NET.patch=(k,i,v)=>{if(conn&&conn.open) conn.send({t:'patch',k,i,v});};
+  NET.close=()=>{try{peer.destroy();}catch(e){}}; NET.reconnect=null;
   setConn('wait');
   peer.on('open',()=>setConn(conn&&conn.open?'on':'wait'));
   peer.on('connection',c=>{
@@ -614,20 +904,19 @@ function peerHost(code,tries){
   peer.on('error',e=>{
     if(e.type==='unavailable-id'){
       try{peer.destroy();}catch(x){}
-      if(G&&G.status==='lobby'&&tries<3){const nc=makeCode();G.code=nc;persist();render();peerHost(nc,tries+1);}
+      if(G&&G.status==='lobby'&&tries<3){G.code=makeCode();persist();render();peerHost(G.code,tries+1);}
       else if(tries<8) setTimeout(()=>peerHost(code,tries+1),3000);
       else {setConn('off');toast('ما قدرنا نرجع نفتح اللعبة. افتحوا لعبة جديدة.');}
-    } else if(['network','server-error','socket-error','socket-closed'].includes(e.type)){setConn('off');toast('ما في اتصال بسيرفر الربط. تأكد من الإنترنت.');}
+    } else if(NETERR.includes(e.type)){setConn('off');toast('ما في اتصال بسيرفر الربط. تأكد من الإنترنت.');}
   });
 }
 function peerGuest(code,name){
   let conn=null; const peer=new Peer();
   NET.send=g=>{if(conn&&conn.open) conn.send({t:'state',g});};
-  NET.sendWho=(i,v)=>{if(conn&&conn.open) conn.send({t:'who',i,v});};
+  NET.patch=(k,i,v)=>{if(conn&&conn.open) conn.send({t:'patch',k,i,v});};
   NET.close=()=>{try{peer.destroy();}catch(e){}};
   const connect=()=>{
-    setConn('wait');
-    conn=peer.connect(PID(code),{reliable:true});
+    setConn('wait'); conn=peer.connect(PID(code),{reliable:true});
     conn.on('open',()=>{setConn('on');conn.send({t:'hello',name});});
     conn.on('data',m=>{ if(m&&m.t==='full'){toast('اللعبة فيها لاعبين.');goHome();} else onMsg(m); });
     conn.on('close',()=>setConn('off'));
@@ -636,34 +925,36 @@ function peerGuest(code,name){
   peer.on('open',connect);
   peer.on('error',e=>{
     if(e.type==='peer-unavailable'){ setConn('off'); if(!G){toast('ما لقينا اللعبة. تأكد من الكود وإنه شريكك فاتح الصفحة.');goHome();} else toast('شريكك مش متصل هلّق. استنى وجرّب «أعد الاتصال».'); }
-    else if(['network','server-error','socket-error','socket-closed'].includes(e.type)){setConn('off');toast('ما في اتصال بسيرفر الربط. تأكد من الإنترنت.');}
+    else if(NETERR.includes(e.type)){setConn('off');toast('ما في اتصال بسيرفر الربط. تأكد من الإنترنت.');}
   });
 }
 function onMsg(m){
   if(!m||typeof m!=='object') return;
   if(m.t==='state'&&m.g&&m.g.players) receive(m.g);
-  else if(m.t==='who'&&G&&G.who&&(m.i===0||m.i===1)){G.who['p'+m.i]=m.v;persist();render();}
+  else if(m.t==='patch'&&G&&['ready','who','pot'].includes(m.k)&&G[m.k]&&(m.i===0||m.i===1)){G[m.k]['p'+m.i]=m.v;persist();render();}
 }
 function makeCode(){const a='ABCDEFGHJKMNPQRSTUVWXYZ';let s='';for(let i=0;i<4;i++)s+=a[Math.floor(Math.random()*a.length)];return s;}
-function goHome(){ try{NET.close();}catch(e){} NET.send=()=>{};NET.sendWho=()=>{};NET.reconnect=null; VIEW='home';MODE='local';G=null;ME=null;CONN=null; render(); top0(); }
+function goHome(){ try{NET.close();}catch(e){} NET.send=()=>{};NET.patch=()=>{};NET.reconnect=null; VIEW='home';MODE='local';G=null;ME=null;CONN=null; render(); top0(); }
 
 /* ================= views ================= */
+function pendingOf(phase){ const k=SIM[phase]; return k&&G[k]?[0,1].filter(i=>!G[k]['p'+i]):[]; }
 function topBar(){
   const t=$('top');
   if(VIEW!=='game'||!G||G.status==='lobby'||!G.players[1]){t.hidden=true;t.innerHTML='';return;}
   t.hidden=false;
   const r=G.r||{},ph=G.phase;
-  const on=i=>ph==='who'?!(G.who&&G.who['p'+i]):((ph==='secret'||ph==='challenge')&&r.answerer===i)||((ph==='guess'||ph==='respond')&&r.guesser===i);
+  const on=i=>SIM[ph]?pendingOf(ph).includes(i):((ph==='secret'||ph==='challenge')&&r.answerer===i)||((ph==='guess'||ph==='respond')&&r.guesser===i);
   const pl=i=>`<div class="pl p${i}${i===1?' r':''}${on(i)&&ph!=='end'?' on':''}">${av(i)}<div class="meta"><span class="nm">${esc(P(i).name)}</span><span class="sc">${P(i).score}</span>
     <span class="badges">${MODE==='online'&&ME===i?'<span class="bdg you">إنت</span>':''}${P(i).lies?'<span class="bdg lie">كرت كذب</span>':'<span class="bdg burn">الكذبة انحرقت</span>'}${P(i).streak?`<span class="bdg st">سلسلة ${P(i).streak}</span>`:''}</span></div></div>`;
-  const pips=G.deck.map((id,i)=>`<span class="pip ${id[0]}${i>=G.total-2?' fin':''}${i<G.round||ph==='end'?' done':''}${i===G.round&&ph!=='end'?' cur':''}"></span>`).join('');
+  const pips=G.deck.map((id,i)=>`<span class="pip ${id[0]==='k'?'n':id[0]}${i>=G.total-2?' fin':''}${i<G.round||ph==='end'?' done':''}${i===G.round&&ph!=='end'?' cur':''}"></span>`).join('');
   let net='';
   if(MODE==='online'){
     const cls=CONN==='on'?'':CONN==='wait'?' wait':' off';
     const txt=CONN==='on'?'متصلين':CONN==='wait'?(ME===0&&ONLINE==='peer'?'بنستنى شريكك يتصل':'عم نتصل…'):'الاتصال مقطوع';
     net=`<div class="net${cls}"><i></i>${txt} · كود ${esc(G.code)}${CONN==='off'&&NET.reconnect?' <button class="btn sm ghost" type="button" data-act="reconnect">أعد الاتصال</button>':''}</div>`;
   }
-  t.innerHTML=`<div class="bar"><div class="players">${pl(0)}<div class="mid"><span>الجولة</span><b>${Math.min(G.round+1,G.total)}/${G.total}</b>${isFinal(G)&&ph!=='end'?'<span style="color:var(--gold)">حسم</span>':''}</div>${pl(1)}</div><div class="pips" aria-hidden="true">${pips}</div>${net}</div>`;
+  const label=ph==='mission'?'البداية':ph==='end'?'النهاية':`${Math.min(G.round+1,G.total)}/${G.total}`;
+  t.innerHTML=`<div class="bar"><div class="players">${pl(0)}<div class="mid"><span>الجولة</span><b>${label}</b>${isFinal(G)&&ph!=='end'?'<span style="color:var(--gold)">حسم</span>':''}<div>${sndBtn(1)}</div></div>${pl(1)}</div><div class="pips" aria-hidden="true">${pips}</div>${net}</div>`;
 }
 
 function rulesCard(){
@@ -671,10 +962,12 @@ function rulesCard(){
     <div class="rules">
       <div class="rule r1"><span class="k">خمّن وراهن</span><p>واحد بيجاوب بالسر عن حاله، والتاني بيخمّن وبيراهن من 1 لـ 5. صح؟ بياخدهم. غلط؟ بيخسرهم.</p></div>
       <div class="rule r2"><span class="k">متأكد؟</span><p>صاحب الجواب بيقدر يتحدّى. المخمّن يا بيقبل والرهان بيتضاعف، يا بينسحب ورهانه بيصير الأقل.</p></div>
-      <div class="rule r3"><span class="k">كرت الكذب</span><p>بتقدر تعطي تلميح «جوابي هو…». معك كذبة وحدة باللعبة. إذا انخدع، بتاخد رهانه.</p></div>
-      <div class="rule r4"><span class="k">مع بعض</span><p>كل تالت جولة الاثنين بيجاوبوا بنفس الوقت ع «مين فينا…». اتفقتوا؟ بتربحوا رهانكم. اختلفتوا؟ نقاش.</p></div>
-      <div class="rule r5"><span class="k">أرقام وسلسلة</span><p>بعض الأسئلة جوابها رقم: بالزبط ضعف الرهان، قريب الرهان. 3 تخمينات صح ورا بعض = 3 نقاط بونص.</p></div>
-      <div class="rule r2"><span class="k">سؤالك وحسم</span><p>كل واحد بيقدر يكتب سؤاله الخاص مرة وحدة باللعبة. آخر جولتين رهاناتهم دبل.</p></div>
+      <div class="rule r3"><span class="k">كرت الكذب</span><p>بتقدر تعطي تلميح عن جوابك. معك كذبة وحدة باللعبة. إذا انخدع، بتاخد رهانه.</p></div>
+      <div class="rule r4"><span class="k">مع بعض</span><p>كل تالت جولة الاثنين بيجاوبوا بنفس الوقت ع «مين فينا…». اتفقتوا؟ بتربحوا رهانكم.</p></div>
+      <div class="rule r5"><span class="k">رتّب وأرقام</span><p>رتّب 4 إشيات حسب حبك، وشريكك بيخمّن الترتيب. وبعض الأسئلة جوابها رقم.</p></div>
+      <div class="rule r3"><span class="k">المهمة السرية</span><p>بأول اللعبة كل واحد بياخد مهمة بالسر. إذا نجّحها، بياخد 10 نقاط بالآخر.</p></div>
+      <div class="rule r2"><span class="k">الصندوق المشترك</span><p>مرات بيطلع صندوق نقاط. إذا وثقتوا ببعض، كل واحد بياخده كامل. إذا الاثنين طمعوا، الاثنين بيخسروا.</p></div>
+      <div class="rule r1"><span class="k">سؤالك وحسم</span><p>كل واحد بيكتب سؤاله الخاص مرة وحدة. آخر جولتين رهاناتهم دبل.</p></div>
     </div></section>`;
 }
 function settingsBlock(){
@@ -686,6 +979,7 @@ function settingsBlock(){
 }
 function vHome(){
   if(![9,15,21].includes(cfg.total)) cfg.total=15;
+  const fresh=Math.max(0,ALLQ()-store.get('tam-seen',[]).length);
   const tabs=`<div class="tabs"><button type="button" class="tab${cfg.tab==='local'?' sel':''}" data-act="tab" data-k="local">جهاز واحد</button><button type="button" class="tab${cfg.tab==='online'?' sel':''}" data-act="tab" data-k="online">تلفونين</button></div>`;
   let body;
   if(cfg.tab==='local'){
@@ -707,7 +1001,8 @@ function vHome(){
   }
   return `<section class="card"><div class="hero"><div class="logo"><span class="a">؟</span><span class="b">!</span></div>
     <h1>تراهن <span class="a">عليّ</span><span class="b">؟</span></h1>
-    <p class="lead">واحد بيجاوب عن حاله بالسر، والتاني بيخمّن وبيراهن قديش بيعرفه.</p></div>${tabs}${body}</section>${rulesCard()}`;
+    <p class="lead">واحد بيجاوب عن حاله بالسر، والتاني بيخمّن وبيراهن قديش بيعرفه.</p>${sndBtn()}</div>${tabs}${body}
+    <p class="fresh">${fresh} سؤال لسا ما طلعلكم من أصل ${ALLQ()}</p></section>${rulesCard()}`;
 }
 function vLobby(){
   return `<section class="card wait pop"><span class="eyebrow">اللعبة مفتوحة · ابعت الكود لشريكك</span>
@@ -719,11 +1014,18 @@ function vLobby(){
 }
 
 function syncDraft(){
-  const r=G.r||{}; const key=[G.round,G.phase,r.qid,ME,G.who?((G.who.p0?1:0)+''+(G.who.p1?1:0)):''].join('|');
+  const r=G.r||{},k=SIM[G.phase];
+  const key=[G.round,G.phase,r.qid,ME,k&&G[k]?((G[k].p0?1:0)+''+(G[k].p1?1:0)):''].join('|');
   if(D.key===key) return;
-  const q=G.r?qOf(G.r):null;
-  D={key,truth:null,hint:'none',lie:null,guess:null,bet:null,pick:null,wbet:null,edit:false,cq:'',co:['','','',''],custom:null};
+  const q=G.r&&G.r.qid?qOf(G.r):null;
+  D={key,truth:null,hint:'none',lie:null,guess:null,bet:null,pick:null,wbet:null,pot:null,edit:false,cq:'',co:['','','',''],custom:null};
   if(q&&q.t==='n'){D.truth=midv(q);D.lie=midv(q);D.guess=midv(q);}
+  if(q&&q.t==='k'){D.truth=[];D.guess=[];}
+}
+function missionBox(i){
+  if(!G.missions) return '';
+  const m=MISSIONS[G.missions[i]],pr=mProgress(G,i);
+  return `<details class="mission"><summary>مهمتك السرية (اضغط لتشوفها)</summary><p>${esc(m.t)}</p><span class="prog">${pr.done?'تمّت! رح تاخد 10 نقاط بالآخر':`التقدّم: ${pr.v}/${pr.n}`}</span></details>`;
 }
 function qCard(q,line){
   return `<div class="qcard"><span class="corner tl">؟</span><span class="corner br">؟</span>
@@ -734,6 +1036,11 @@ function qCard(q,line){
 function grid(opts,sel,act,dis,cls){
   return `<div class="opts">${opts.map((o,i)=>`<button type="button" class="opt${sel===i?' sel '+(cls||''):''}" data-act="${act}" data-v="${i}" ${dis===i?'disabled':''}>${esc(o)}</button>`).join('')}</div>`;
 }
+function ranker(items,order,act){
+  return `<div class="rank">${items.map((o,i)=>{const p=order.indexOf(i);return `<button type="button" class="ritem${p>=0?' on':''}" data-act="${act}" data-v="${i}"><span class="rn">${p>=0?p+1:''}</span>${esc(o)}</button>`;}).join('')}</div>
+    <p class="muted small center">${order.length<4?`اضغط بالترتيب، الأكثر أول (${order.length}/4)`:'الترتيب جاهز. اضغط ع أي واحد لتشيله.'}</p>`;
+}
+function toggleRank(arr,i){ const p=arr.indexOf(i); if(p>=0) arr.splice(p,1); else { arr.push(i); if(arr.length===3) for(let j=0;j<4;j++) if(!arr.includes(j)){arr.push(j);break;} } }
 function slider(q,id,val){
   return `<div class="num"><output id="${id}o" for="${id}">${val}<small>${esc(q.u)}</small></output>
     <input type="range" id="${id}" min="${q.min}" max="${q.max}" step="${q.step}" value="${val}" aria-label="الجواب">
@@ -741,10 +1048,20 @@ function slider(q,id,val){
 }
 function waitCard(msg,extra){ return `<section class="card wait"><h2>${msg} <span class="dots"><i></i><i></i><i></i></span></h2>${extra||''}</section>`; }
 function passCard(i,msg){
-  return `<section class="card pass pop">${av(i).replace('class="av','class="av')}<p class="muted">سلّم الجهاز لـ</p><div class="who c${i}">${esc(P(i).name)}</div>
+  return `<section class="card pass pop">${av(i)}<p class="muted">سلّم الجهاز لـ</p><div class="who c${i}">${esc(P(i).name)}</div>
     <p class="lead">${msg}</p><button class="btn" type="button" data-act="gate" data-v="${i}">أنا ${esc(P(i).name)}، يلا</button></section>`;
 }
 
+function vMission(){
+  const pend=pendingOf('mission');
+  if(!pend.length) return `<section class="card wait pop"><h2>الاثنين جاهزين</h2><button class="btn rose cta" type="button" data-act="simFinish" data-k="mission">يلا نبلّش</button></section>`;
+  let i; if(MODE==='local') i=pend[0]; else { if(G.ready['p'+ME]) return waitCard(`${nm(1-ME)} عم يقرأ مهمته`); i=ME; }
+  const m=MISSIONS[G.missions[i]];
+  return `<section class="card mcard pop"><span class="eyebrow">سرّي · ${nm(i)} بس يشوف</span><div class="seal">؟</div>
+    <h2>مهمتك السرية</h2><p class="mt">${esc(m.t)}</p>
+    <p class="muted small">إذا نجّحتها بتاخد 10 نقاط بآخر اللعبة. ${esc(P(1-i).name)} عنده مهمة تانية، وما حدا بيعرف مهمة التاني لحد النهاية. بتقدر ترجع تشوفها وقت دورك.</p>
+    <button class="btn rose" type="button" data-act="readyMission" data-v="${i}">حفظتها</button></section>`;
+}
 function vSecret(){
   const r=G.r,A=r.answerer,Gs=r.guesser;
   const q=D.custom?{t:'c',cat:'custom',q:D.custom.q,o:D.custom.o}:qOf(r);
@@ -755,90 +1072,158 @@ function vSecret(){
       ${D.co.map((v,i)=>`<div class="field"><label for="co${i}">خيار ${i+1}${i>1?' (اختياري)':''}</label><input id="co${i}" maxlength="40" value="${esc(v)}"></div>`).join('')}</div>
       <div class="btns"><button class="btn" type="button" data-act="useCustom">اعتمد السؤال</button><button class="btn ghost" type="button" data-act="cancelCustom">رجوع</button></div></section>`;
   }
-  const hasLie=P(A).lies>0, num=q.t==='n', canCustom=!num&&(P(A).custom>0);
+  const hasLie=P(A).lies>0,num=q.t==='n',rk=q.t==='k',canCustom=q.t==='c'&&P(A).custom>0;
   const opt=(v,t,s,dis)=>`<label class="${D.hint===v?'sel':''}${v==='lie'?' lie':''}${dis?' off':''}"><input type="radio" name="hint" value="${v}" ${D.hint===v?'checked':''} ${dis?'disabled':''}><span><b>${t}</b><small>${s}</small></span></label>`;
   let lieUI='';
-  if(D.hint==='lie') lieUI=`<div class="sub"><h3>شو الجواب الكاذب اللي بدك تحكيه؟</h3>${num?slider(q,'lie',D.lie)+`<p class="muted small">لازم يبعد أكثر من ${q.tol} عن جوابك الحقيقي.</p>`:grid(q.o,D.lie,'lie',D.truth,'lie')}</div>`;
-  const ready=D.truth!==null&&(D.hint!=='lie'||(D.lie!==null&&(num?!near(q,D.lie,D.truth):D.lie!==D.truth)));
+  if(D.hint==='lie'){
+    if(num) lieUI=slider(q,'lie',D.lie)+`<p class="muted small">لازم يبعد أكثر من ${q.tol} عن جوابك الحقيقي.</p>`;
+    else if(rk) lieUI=`<p class="muted small">اختار شو بدك تحكي إنه «الأول عندك»:</p>`+grid(q.o,D.lie,'lie',D.truth.length?D.truth[0]:null,'lie');
+    else lieUI=grid(q.o,D.lie,'lie',D.truth,'lie');
+    lieUI=`<div class="sub"><h3>شو الكذبة اللي بدك تحكيها؟</h3>${lieUI}</div>`;
+  }
+  const truthOk=rk?D.truth.length===4:D.truth!==null;
+  const lieOk=D.hint!=='lie'||(D.lie!==null&&(num?!near(q,D.lie,D.truth):rk?D.lie!==D.truth[0]:D.lie!==D.truth));
+  const hintTrue=rk?'رح نوريه شو الأول عندك.':'رح نوريه جوابك.';
   return qCard(q,`سرّي · ${esc(P(A).name)} بس يشوف`)+
-  `<section class="card"><h3>جاوب بصراحة عن حالك</h3>${num?slider(q,'truth',D.truth):grid(q.o,D.truth,'truth')}
+  `<section class="card"><h3>${rk?'رتّب بصراحة حسب حالك':'جاوب بصراحة عن حالك'}</h3>${num?slider(q,'truth',D.truth):rk?ranker(q.o,D.truth,'rtruth'):grid(q.o,D.truth,'truth')}
     ${canCustom||D.custom?`<button class="btn sm ghost" type="button" data-act="editCustom">${D.custom?'عدّل سؤالك':'اكتب سؤالك بدال هاد (مرة وحدة باللعبة)'}</button>`:''}</section>
   <section class="card"><h3>بدك تعطي ${esc(P(Gs).name)} تلميح؟</h3>
-    <div class="seg">${opt('none','بدون تلميح','خلّيه يخمّن لحاله.')}${opt('true','تلميح صادق','رح نوريه جوابك. إذا جاوب صح بتاخد نقطة.')}${opt('lie','تلميح كذّاب',hasLie?'بتستخدم كرت الكذب. إذا صدّقك بتاخد رهانه.':'كرت الكذب تبعك انحرق.',!hasLie)}</div>
-    ${lieUI}</section>
-  <button class="btn rose cta" type="button" data-act="submitSecret" ${ready?'':'disabled'}>${MODE==='local'?'خلصت، سلّم الجهاز':'خلصت'}</button>`;
+    <div class="seg">${opt('none','بدون تلميح','خلّيه يخمّن لحاله.')}${opt('true','تلميح صادق',hintTrue+' إذا جاوب صح بتاخد نقطة.')}${opt('lie','تلميح كذّاب',hasLie?'بتستخدم كرت الكذب. إذا صدّقك بتاخد رهانه.':'كرت الكذب تبعك انحرق.',!hasLie)}</div>
+    ${lieUI}</section>${missionBox(A)}
+  <button class="btn rose cta" type="button" data-act="submitSecret" ${truthOk&&lieOk?'':'disabled'}>${MODE==='local'?'خلصت، سلّم الجهاز':'خلصت'}</button>`;
 }
 function hintBox(q){
   const r=G.r,A=r.answerer;
   if(r.hint==='none') return `<div class="hint"><span>${nm(A)} ما عطى أي تلميح.</span></div>`;
   const note=P(A).lies>0?'ممكن يكون صادق، وممكن يكون كرت الكذب.':'كرت الكذب انحرق من قبل، يعني التلميح صادق أكيد.';
-  return `<div class="hint say"><small>${nm(A)} بيحكي:</small><span class="q">«جوابي ${esc(fmt(q,r.shown))}»</span><small>${note}</small></div>`;
+  return `<div class="hint say"><small>${nm(A)} بيحكي:</small><span class="q">«${esc(fmtHint(q,r.shown))}»</span><small>${note}</small></div>`;
 }
 function vGuess(){
   const r=G.r,A=r.answerer,Gs=r.guesser,q=qOf(r);
-  if(!mine(Gs)) return qCard(q)+waitCard(`${nm(Gs)} عم يخمّن`,`<p class="lead">جوابك: <b>${esc(fmt(q,r.truth))}</b></p>`);
-  const ch=chipsOf(G),num=q.t==='n',ready=D.guess!==null&&D.bet;
+  if(!mine(Gs)) return qCard(q)+waitCard(`${nm(Gs)} عم يخمّن`,`<p class="lead">جوابك: <b>${esc(fmt(q,r.truth))}</b></p>`)+(MODE==='online'?missionBox(ME):'');
+  const ch=chipsOf(G),ready=(q.t==='k'?D.guess.length===4:D.guess!==null)&&D.bet;
   const labels=['مش متأكد أبدًا','بلكي','تقريبًا','متأكد','بحط إيدي بالنار'];
-  return qCard(q,`خمّن جواب ${esc(P(A).name)}`)+
-  `<section class="card">${hintBox(q)}${num?slider(q,'guess',D.guess)+`<p class="muted small center">بالزبط: ضعف الرهان · ضمن ±${q.tol}: الرهان</p>`:grid(q.o,D.guess,'guess')}</section>
+  const inp=q.t==='n'?slider(q,'guess',D.guess)+`<p class="muted small center">بالزبط: ضعف الرهان · ضمن ±${q.tol}: الرهان</p>`
+    :q.t==='k'?ranker(q.o,D.guess,'rguess')+`<p class="muted small center">4 بمكانهم: ضعف الرهان · 2: الرهان · 1: ولا إشي · 0: خسارة</p>`:grid(q.o,D.guess,'guess');
+  return qCard(q,`خمّن ${q.t==='k'?'ترتيب':'جواب'} ${esc(P(A).name)}`)+
+  `<section class="card">${hintBox(q)}${inp}</section>
   <section class="card"><h3 class="center">قديش متأكد؟</h3>
     <div class="chips">${ch.map(n=>`<button type="button" class="chip${D.bet===n?' sel':''}" data-act="bet" data-v="${n}" aria-label="رهان ${n}">${n}</button>`).join('')}</div>
-    <p class="betlabel">${D.bet?labels[ch.indexOf(D.bet)]:'اختار قديش بتراهن'}</p></section>
+    <p class="betlabel">${D.bet?labels[ch.indexOf(D.bet)]:'اختار قديش بتراهن'}</p></section>${missionBox(Gs)}
   <button class="btn rose cta" type="button" data-act="submitGuess" ${ready?'':'disabled'}>أراهن</button>`;
 }
 function vChallenge(){
   const r=G.r,A=r.answerer,Gs=r.guesser,q=qOf(r),ch=chipsOf(G);
   const sum=`<div class="summary"><span>${nm(Gs)} خمّن: <span class="g">${esc(fmt(q,r.guess))}</span></span><span class="betbadge">${r.bet}</span></div>`;
+  const mb=MODE==='online'?missionBox(ME):'';
   if(G.phase==='challenge'){
-    if(!mine(A)) return waitCard(`${nm(A)} بيفكر يتحدّاك`,sum);
+    if(!mine(A)) return waitCard(`${nm(A)} بيفكر يتحدّاك`,sum)+mb;
     return `<section class="card pop"><span class="eyebrow">دور ${nm(A)} · ${esc(q.q)}</span>
       <h2>بدك تتحدّى ${esc(P(Gs).name)}؟</h2>${sum}
       <p class="muted small">إذا تحدّيت: يا بيقبل والرهان بيصير ×2، يا بينسحب ورهانه بيصير ${ch[0]}. بتقدر تتحدّى لتخوّفه حتى لو جوابه صح.</p>
-      <div class="btns"><button class="btn gold" type="button" data-act="challenge">متأكد؟ بتحدّاك!</button><button class="btn ghost" type="button" data-act="noChallenge">خلّيه</button></div></section>`;
+      <div class="btns"><button class="btn gold" type="button" data-act="challenge">متأكد؟ بتحدّاك!</button><button class="btn ghost" type="button" data-act="noChallenge">خلّيه</button></div></section>`+mb;
   }
-  if(!mine(Gs)) return waitCard(`${nm(Gs)} عم يقرر`,sum);
+  if(!mine(Gs)) return waitCard(`${nm(Gs)} عم يقرر`,sum)+mb;
   return `<section class="card pop"><span class="eyebrow">دور ${nm(Gs)}</span><h2>${esc(P(A).name)} تحدّاك!</h2>${sum}
-    <div class="btns"><button class="btn gold" type="button" data-act="accept">بقبل، ضاعف ×2</button><button class="btn ghost" type="button" data-act="retreat">بنسحب (رهاني ${ch[0]})</button></div></section>`;
+    <div class="btns"><button class="btn gold" type="button" data-act="accept">بقبل، ضاعف ×2</button><button class="btn ghost" type="button" data-act="retreat">بنسحب (رهاني ${ch[0]})</button></div></section>`+mb;
 }
 function vWho(){
-  const q=qOf(G.r), pending=[0,1].filter(i=>!G.who['p'+i]);
-  if(!pending.length) return qCard(q)+`<section class="card wait pop"><h2>الاثنين جاوبوا!</h2><button class="btn gold cta" type="button" data-act="revealWho">اكشفوا</button></section>`;
-  let i;
-  if(MODE==='local') i=pending[0];
-  else { if(G.who['p'+ME]) return qCard(q)+waitCard(`${nm(1-ME)} لسا بيختار`); i=ME; }
+  const q=qOf(G.r),pend=pendingOf('who');
+  if(!pend.length) return qCard(q)+`<section class="card wait pop"><h2>الاثنين جاوبوا!</h2><button class="btn gold cta" type="button" data-act="simFinish" data-k="who">اكشفوا</button></section>`;
+  let i; if(MODE==='local') i=pend[0]; else { if(G.who['p'+ME]) return qCard(q)+waitCard(`${nm(1-ME)} لسا بيختار`)+missionBox(ME); i=ME; }
   const ready=D.pick!==null&&D.wbet;
   return qCard(q,`الاثنين بيجاوبوا · سرّي ${esc(P(i).name)}`)+
   `<section class="card"><div class="opts">${[i,1-i].map(p=>`<button type="button" class="opt big p${p}${D.pick===p?' sel':''}" data-act="pick" data-v="${p}">${av(p)}${p===i?'أنا':esc(P(p).name)}</button>`).join('')}</div></section>
   <section class="card"><h3 class="center">قديش متأكد إنكم رح تتفقوا؟</h3>
-    <div class="chips">${[1,2,3].map(n=>`<button type="button" class="chip${D.wbet===n?' sel':''}" data-act="wbet" data-v="${n}">${n}</button>`).join('')}</div></section>
-  <button class="btn rose cta" type="button" data-act="submitWho" data-v="${i}" ${ready?'':'disabled'}>${MODE==='local'&&pending.length>1?'خلصت، سلّم الجهاز':'خلصت'}</button>`;
+    <div class="chips">${[1,2,3].map(n=>`<button type="button" class="chip${D.wbet===n?' sel':''}" data-act="wbet" data-v="${n}">${n}</button>`).join('')}</div></section>${missionBox(i)}
+  <button class="btn rose cta" type="button" data-act="submitWho" data-v="${i}" ${ready?'':'disabled'}>${MODE==='local'&&pend.length>1?'خلصت، سلّم الجهاز':'خلصت'}</button>`;
+}
+function vPot(){
+  const pend=pendingOf('pot'),Pz=G.pot.size;
+  if(!pend.length) return `<section class="card wait pop"><h2>الاثنين اختاروا</h2><button class="btn gold cta" type="button" data-act="simFinish" data-k="pot">افتحوا الصندوق</button></section>`;
+  let i; if(MODE==='local') i=pend[0]; else { if(G.pot['p'+ME]) return waitCard(`${nm(1-ME)} لسا بيقرر`)+missionBox(ME); i=ME; }
+  const o=1-i,b=G.stats[o].betray;
+  return `<section class="card pop"><span class="eyebrow">الصندوق المشترك · سرّي ${nm(i)}</span>
+    <div class="potbox"><div class="stack">${'<i></i>'.repeat(Math.min(Pz,18))}</div><span class="potn">${Pz}</span><span class="muted small">نقطة بالصندوق</span></div>
+    <ul class="matrix">
+      <li><span>الاثنين بيتقاسموا</span><b class="pts plus">كل واحد +${Pz}</b></li>
+      <li><span>واحد بياخد والتاني بيتقاسم</span><b>اللي أخذ +${Math.round(Pz*1.5)} · التاني 0</b></li>
+      <li><span>الاثنين بياخدوا</span><b class="pts minus">كل واحد −${Pz}</b></li>
+    </ul>
+    <p class="rep">${b?`${esc(P(o).name)} أخذ الصندوق لحاله <b>${b} ${b>1?'مرات':'مرة'}</b> قبل.`:`${esc(P(o).name)} لسا ما خان ولا مرة.`} ${G.potTrust?`الثقة بينكم عم تكبّر الصندوق (+${3*G.potTrust}).`:''}</p>
+    <div class="choice"><button type="button" class="opt share${D.pot==='share'?' sel':''}" data-act="potc" data-k="share">بنتقاسم<small>بثق فيك</small></button><button type="button" class="opt take${D.pot==='take'?' sel':''}" data-act="potc" data-k="take">باخده<small>مخاطرة</small></button></div>
+  </section>${missionBox(i)}<button class="btn rose cta" type="button" data-act="submitPot" data-v="${i}" ${D.pot?'':'disabled'}>${MODE==='local'&&pend.length>1?'خلصت، سلّم الجهاز':'خلصت'}</button>`;
 }
 function ledger(lines){ return `<ul class="ledger">${lines.map(l=>`<li><span class="l">${av(l.p)}<span>${nm(l.p)} · <span class="muted small">${esc(l.why)}</span></span></span><span class="pts ${l.pts>0?'plus':l.pts<0?'minus':''}">${signed(l.pts)}</span></li>`).join('')}</ul>`; }
+const nextBtn=()=>`<button class="btn cta" type="button" data-act="next" data-v="${G.round}" data-k="${G.phase}">${G.phase==='reveal'&&isPotAfter(G.round,G.total)&&!G.potDone.includes(G.round)?'كمل':G.round+1>=G.total?'النتيجة النهائية':'الجولة الجاية'}</button>`;
 function vReveal(){
-  const r=G.r,q=qOf(r),last=G.round+1>=G.total;
-  const nextBtn=`<button class="btn cta" type="button" data-act="next" data-v="${G.round}">${last?'النتيجة النهائية':'الجولة الجاية'}</button>`;
+  const r=G.r,q=qOf(r);
   if(q.t==='w'){
     const picks=[G.who.p0.pick,G.who.p1.pick];
     return qCard(q)+`<section class="card pop"><div class="verdict ${r.result.agree?'ok':'no'}">${r.result.agree?'اتفقتوا!':'اختلفتوا!'}</div>
       <div class="duo">${[0,1].map(i=>`<div><span class="n c${i}">${esc(P(i).name)} اختار</span>${av(picks[i])}<span class="s c${picks[i]}" style="font-size:1.5rem">${esc(P(picks[i]).name)}</span></div>`).join('')}</div>
-      ${r.result.agree?'':'<p class="lead">ناقشوها. مين معه حق؟</p>'}${ledger(r.result.lines)}</section>`+nextBtn;
+      ${r.result.agree?'':'<p class="lead">ناقشوها. مين معه حق؟</p>'}${ledger(r.result.lines)}</section>`+nextBtn();
   }
-  const A=r.answerer,v=r.result.correct?(q.t==='n'&&!r.result.exact?['mid','قريب!']:['ok','صح!']):['no','غلط!'];
-  const detail=q.t==='n'?`<p class="muted center">التخمين: ${esc(fmt(q,r.guess))}${r.hint==='lie'?` · الكذبة كانت: ${esc(fmt(q,r.shown))}`:''}</p>`
-    :`<div class="opts">${q.o.map((o,i)=>`<div class="opt static${i===r.truth?' truth':''}${i===r.guess&&i!==r.truth?' wrong':''}">${esc(o)}${i===r.truth?'<span class="tick">✓</span>':''}${r.hint==='lie'&&i===r.shown?' <small class="muted">(الكذبة)</small>':''}</div>`).join('')}</div>`;
+  const A=r.answerer,res=r.result;
+  const v=q.t==='k'?(res.m===4?['ok','كامل!']:res.m===2?['mid','نص نص']:res.m===1?['mid','قريب شوي']:['no','غلط!'])
+    :res.correct?(q.t==='n'&&!res.exact?['mid','قريب!']:['ok','صح!']):['no','غلط!'];
+  let detail;
+  if(q.t==='n') detail=`<div class="truthbox"><span class="muted">جواب ${nm(A)} الحقيقي</span><span class="v">${esc(fmt(q,r.truth))}</span></div><p class="muted center">التخمين: ${esc(fmt(q,r.guess))}${r.hint==='lie'?` · الكذبة كانت: ${esc(fmt(q,r.shown))}`:''}</p>`;
+  else if(q.t==='k') detail=`<span class="muted center">ترتيب ${nm(A)} الحقيقي</span><ul class="rrev">${r.truth.map((x,j)=>{const gp=r.guess.indexOf(x);return `<li class="${gp===j?'ok':''}"><span class="rn">${j+1}</span><span>${esc(q.o[x])}</span><span class="gx">${gp===j?'✓ بمكانه':`خمّنه ${gp+1}`}</span></li>`;}).join('')}</ul>${r.hint==='lie'?`<p class="muted center small">الكذبة كانت: الأول عندي ${esc(q.o[r.shown])}</p>`:''}`;
+  else detail=`<div class="truthbox"><span class="muted">جواب ${nm(A)} الحقيقي</span><span class="v">${esc(fmt(q,r.truth))}</span></div><div class="opts">${q.o.map((o,i)=>`<div class="opt static${i===r.truth?' truth':''}${i===r.guess&&i!==r.truth?' wrong':''}">${esc(o)}${i===r.truth?'<span class="tick">✓</span>':''}${r.hint==='lie'&&i===r.shown?' <small class="muted">(الكذبة)</small>':''}</div>`).join('')}</div>`;
   return `<section class="card pop"><p class="muted center small">${esc(q.q)}</p><div class="verdict ${v[0]}">${v[1]}</div>
-    <div class="truthbox"><span class="muted">جواب ${nm(A)} الحقيقي</span><span class="v">${esc(fmt(q,r.truth))}</span></div>
     ${r.hint==='lie'?`<div class="hint say"><span class="q">والتلميح كان كذبة!</span><small>${nm(A)} استخدم كرت الكذب.</small></div>`:''}
-    ${detail}${ledger(r.result.lines)}</section>`+nextBtn;
+    ${detail}${ledger(res.lines)}</section>`+nextBtn();
+}
+function vPotReveal(){
+  const p=G.pot,k=p.result.kind,c=[p.p0,p.p1];
+  const v=k==='trust'?['ok','ثقة!']:k==='greed'?['no','الاثنين طمعوا!']:['mid','خيانة!'];
+  return `<section class="card pop"><span class="eyebrow center">الصندوق المشترك · ${p.size} نقطة</span><div class="verdict ${v[0]}">${v[1]}</div>
+    <div class="duo">${[0,1].map(i=>`<div><span class="n c${i}">${esc(P(i).name)}</span><span class="s" style="font-size:1.5rem;color:var(--${c[i]==='share'?'good':'bad'})">${c[i]==='share'?'تقاسم':'أخذ'}</span></div>`).join('')}</div>
+    ${k==='trust'?'<p class="lead">الصندوق الجاي رح يكون أكبر.</p>':k==='betray'?'<p class="lead">الثقة انكسرت، والصندوق الجاي رجع صغير.</p>':'<p class="lead">ولا حدا وثق، والاثنين دفعوا التمن.</p>'}
+    ${ledger(p.result.lines)}</section>`+nextBtn();
+}
+
+/* ---------- end-of-game summary ---------- */
+function summary(){
+  const L=G.log,gl=L.filter(x=>x.t!=='w'&&x.t!=='p'),S=G.stats;
+  const pct=i=>S[i].guesses?Math.round(100*S[i].correct/S[i].guesses):0;
+  const cats={};gl.forEach(x=>{const c=cats[x.cat]||(cats[x.cat]=[[0,0],[0,0]]);c[x.g][1]++;if(x.ok)c[x.g][0]++;});
+  const catRows=Object.entries(cats).map(([k,v])=>`<div class="crow"><span class="cl">${esc(catName(k))}</span><div class="bars">${[0,1].map(i=>{const [a,b]=v[i];const w=b?Math.round(100*a/b):0;return `<div class="br"><span class="track"><span class="fill p${i}" style="width:${b?Math.max(w,4):0}%;display:block"></span></span><span class="v">${b?`${a}/${b}`:'—'}</span></div>`;}).join('')}</div></div>`).join('');
+  const best=gl.slice().sort((a,b)=>b.pts-a.pts)[0], worst=gl.slice().sort((a,b)=>a.pts-b.pts)[0];
+  const whoL=L.filter(x=>x.t==='w'),agree=whoL.filter(x=>x.agree).length;
+  const pots=L.filter(x=>x.t==='p');
+  const lies=[0,1].map(i=>S[i].lieWins);
+  const mom=[];
+  if(best&&best.pts>0) mom.push(`<li><span class="mk">أكبر ربح</span><span>${nm(best.g)} <b class="pts plus">${signed(best.pts)}</b> ع «${esc(best.q)}»</span></li>`);
+  if(worst&&worst.pts<0) mom.push(`<li><span class="mk">أكبر خسارة</span><span>${nm(worst.g)} <b class="pts minus">${signed(worst.pts)}</b> ع «${esc(worst.q)}»</span></li>`);
+  if(whoL.length) mom.push(`<li><span class="mk">مين فينا؟</span><span>اتفقتوا ${agree} من ${whoL.length} ${agree===whoL.length?'· نفس التفكير!':agree===0?'· ولا مرة!':''}</span></li>`);
+  if(lies[0]||lies[1]) mom.push(`<li><span class="mk">كذبات نجحت</span><span>${[0,1].filter(i=>lies[i]).map(i=>`${nm(i)} خدع شريكه`).join(' · ')}</span></li>`);
+  if(pots.length) mom.push(`<li><span class="mk">قصة الصندوق</span><span class="potstory">${pots.map(p=>p.kind==='trust'?'<span class="good">ثقة</span>':p.kind==='greed'?'<span class="bad">الاثنين طمعوا</span>':`<span class="bad">${esc(P(p.c[0]==='take'?0:1).name)} أخذه</span>`).join('')}</span></li>`);
+  const titles=[0,1].map(i=>{const t=[];const o=1-i;
+    if(pct(i)>pct(o)) t.push('قارئ الأفكار');
+    if(S[i].lieWins) t.push('الكذّاب المحترف');
+    if(S[i].betray) t.push('الطمّاع');
+    if(G.potCount&&S[i].potShares===G.potCount) t.push('أهل الثقة');
+    if(S[i].guesses&&S[o].guesses&&S[i].betSum/S[i].guesses>S[o].betSum/S[o].guesses) t.push('الجريء');
+    if(S[i].challengeWins>=2) t.push('المخوّف');
+    if(!t.length) t.push(pct(i)>=50?'بيعرف كثير':'لسا بيتعرّف');
+    return t.slice(0,3);});
+  return `<section class="card"><h3>مين بيعرف التاني أكثر؟</h3>
+    <div class="acc">${[0,1].map(i=>`<div><span class="n c${i}" style="font-weight:800">${esc(P(i).name)}</span><span class="pc c${i}">${pct(i)}%</span><span class="sub2">خمّن صح ${S[i].correct} من ${S[i].guesses}</span><div class="titles c${i}">${titles[i].map(x=>`<span class="ttl">${x}</span>`).join('')}</div></div>`).join('')}</div></section>
+  ${catRows?`<section class="card"><h3>حسب الموضوع</h3><div class="cats2">${catRows}</div><p class="muted small">الخط الأول ${nm(0)}، التاني ${nm(1)}.</p></section>`:''}
+  <section class="card"><h3>المهمات السرية</h3><div class="mres">${[0,1].map(i=>`<div class="${G.missionDone[i]?'ok':''}"><span class="mtxt">${nm(i)}: ${esc(MISSIONS[G.missions[i]].t)}</span><b class="pts ${G.missionDone[i]?'plus':''}">${G.missionDone[i]?'+10':'ما زبطت'}</b></div>`).join('')}</div></section>
+  ${mom.length?`<section class="card"><h3>لحظات اللعبة</h3><ul class="moments">${mom.join('')}</ul></section>`:''}`;
 }
 function vEnd(){
   const [a,b]=G.players,w=a.score===b.score?-1:(a.score>b.score?0:1);
   return `<section class="card pop"><div class="win"><span class="eyebrow">انتهت اللعبة</span>
     ${w<0?`<h1>تعادل!</h1><p class="lead">بتعرفوا بعض بنفس المقدار. أو بتكذبوا بنفس المهارة.</p>`:
-      `${av(w).replace('class="av','style="width:84px;height:84px;font-size:2.4rem" class="av')}<h1 class="c${w}">${esc(P(w).name)}</h1><p class="lead">ربح! يعني بيعرف ${esc(P(1-w).name)} أكثر من العكس.</p>`}</div>
+      `${av(w,'width:84px;height:84px;font-size:2.4rem')}<h1 class="c${w}">${esc(P(w).name)}</h1><p class="lead">ربح!</p>`}</div>
     <div class="duo">${[0,1].map(i=>`<div><span class="n c${i}">${esc(P(i).name)}</span><span class="s c${i}">${P(i).score}</span></div>`).join('')}</div>
-    ${G.prize?`<div class="prize"><span class="muted small">الرهان الكبير</span><b>${esc(G.prize)}</b>${w>=0?`<span>${nm(1-w)}، حان وقت الدفع.</span>`:'<span>تعادل… الاثنين بيدفعوا؟</span>'}</div>`:''}
-    <div class="btns"><button class="btn rose" type="button" data-act="rematch">لعبة جديدة</button><button class="btn ghost" type="button" data-act="home">الرئيسية</button></div></section>`;
+    ${G.prize?`<div class="prize"><span class="muted small">الرهان الكبير</span><b>${esc(G.prize)}</b>${w>=0?`<span>${nm(1-w)}، حان وقت الدفع.</span>`:'<span>تعادل… الاثنين بيدفعوا؟</span>'}</div>`:''}</section>
+  ${summary()}
+  <div class="btns"><button class="btn rose" type="button" data-act="rematch">لعبة جديدة</button><button class="btn ghost" type="button" data-act="home">الرئيسية</button></div>`;
 }
 function vGame(){
   if(!G) return waitCard('عم نتصل باللعبة')+`<button class="link" type="button" data-act="home">رجوع</button>`;
@@ -847,15 +1232,28 @@ function vGame(){
   syncDraft();
   if(MODE==='local'){
     let h=null,msg='';
-    if(G.phase==='secret'){h=G.r.answerer;msg=`السؤال عنك. خلّي ${esc(P(G.r.guesser).name)} يطّلع بعيد.`;}
-    else if(G.phase==='guess'){h=G.r.guesser;msg=`دورك تخمّن جواب ${esc(P(G.r.answerer).name)}.`;}
-    else if(G.phase==='who'){const p=[0,1].filter(i=>!G.who['p'+i]);if(p.length){h=p[0];msg='الاثنين بيجاوبوا هالجولة. جاوب بالسر.';}}
-    if(h!==null&&localSeen!==G.round+G.phase+h) return passCard(h,msg);
+    const ph=G.phase;
+    if(ph==='secret'){h=G.r.answerer;msg=`السؤال عنك. خلّي ${esc(P(G.r.guesser).name)} يطّلع بعيد.`;}
+    else if(ph==='guess'){h=G.r.guesser;msg=`دورك تخمّن ${esc(P(G.r.answerer).name)}.`;}
+    else if(SIM[ph]){const p=pendingOf(ph);if(p.length){h=p[0];msg=ph==='mission'?'رح تشوف مهمتك السرية. ما تخلّي حدا يشوف.':ph==='pot'?'الصندوق المشترك. قرارك سرّي.':'الاثنين بيجاوبوا هالجولة. جاوب بالسر.';}}
+    if(h!==null&&localSeen!==G.round+ph+h) return passCard(h,msg);
   }
-  const v={secret:vSecret,guess:vGuess,challenge:vChallenge,respond:vChallenge,who:vWho,reveal:vReveal}[G.phase];
+  const v={mission:vMission,secret:vSecret,guess:vGuess,challenge:vChallenge,respond:vChallenge,who:vWho,reveal:vReveal,pot:vPot,potReveal:vPotReveal}[G.phase];
   return v()+`<button class="link" type="button" data-act="home">رجوع للرئيسية</button>`;
 }
-function render(){ topBar(); $('stage').innerHTML=VIEW==='game'?vGame():vHome(); bindInputs(); }
+function playFx(){
+  if(VIEW!=='game'||!G) return;
+  const k=G.round+'|'+G.phase+'|'+(G.status||''); if(k===lastFxKey) return; const first=!lastFxKey; lastFxKey=k; if(first) return;
+  const ph=G.phase;
+  if(ph==='reveal'&&G.r.result){const r=G.r.result;sfx(r.agree===true||r.exact?'good':r.agree===false?'bad':r.correct?'mid':'bad');}
+  else if(ph==='potReveal') sfx(G.pot.result.kind==='trust'?'coins':'bad');
+  else if(ph==='end') sfx('win');
+  else if(MODE==='online'){
+    const r=G.r||{};const my=SIM[ph]?!(G[SIM[ph]]&&G[SIM[ph]]['p'+ME]):((ph==='secret'||ph==='challenge')&&r.answerer===ME)||((ph==='guess'||ph==='respond')&&r.guesser===ME);
+    if(my) sfx('turn');
+  }
+}
+function render(){ topBar(); $('stage').innerHTML=VIEW==='game'?vGame():vHome(); bindInputs(); playFx(); }
 
 function bindInputs(){
   [['truth','truth'],['lie','lie'],['guess','guess']].forEach(([id,key])=>{
@@ -878,29 +1276,32 @@ function bindInputs(){
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-act]'); if(!t||t.disabled) return;
   const a=t.dataset.act, v=t.dataset.v!==undefined?Number(t.dataset.v):null;
+  if(['truth','guess','lie','pick','bet','wbet','rtruth','rguess','potc','cat','rounds'].includes(a)) sfx('tick'); else if(a!=='sound') sfx('tap');
   switch(a){
+    case 'sound': AU.on=!AU.on; store.set('tam-sound',AU.on); if(AU.on) musicOn(); else musicOff(); render(); break;
     case 'tab': cfg.tab=t.dataset.k; saveCfg(); render(); break;
     case 'rounds': cfg.total=v; saveCfg(); render(); break;
     case 'cat': { const k=t.dataset.k; cfg.cats=cfg.cats.includes(k)?cfg.cats.filter(x=>x!==k):cfg.cats.concat(k); if(!cfg.cats.length) cfg.cats=[k]; saveCfg(); render(); break; }
     case 'startLocal': {
       const names=[cfg.names[0].trim()||'اللاعب الأول',cfg.names[1].trim()||'اللاعب الثاني'];
-      MODE='local';ME=null;localSeen='';G=newGame(names,cfg.total,cfg.cats,cfg.prize.trim());VIEW='game';render();top0();break; }
+      MODE='local';ME=null;localSeen='';lastFxKey='';G=newGame(names,cfg.total,cfg.cats,cfg.prize.trim());VIEW='game';render();top0();break; }
     case 'create': {
       const name=cfg.myName.trim(); if(!name){toast('اكتب اسمك أول.');return;}
       const g=newGame([name,''],cfg.total,cfg.cats,cfg.prize.trim(),0);
       g.status='lobby'; g.code=makeCode(); g.createdAt=Date.now(); g.players=[g.players[0]];
-      MODE='online';ME=0;G=g;VIEW='game';persist();render();top0();
+      MODE='online';ME=0;G=g;VIEW='game';lastFxKey='';persist();render();top0();
       if(ONLINE==='db') dbStart(g.code,g); else peerHost(g.code);
       break; }
     case 'join': {
-      const name=cfg.myName.trim(), code=(cfg.code||'').trim();
+      const name=cfg.myName.trim(),code=(cfg.code||'').trim();
       if(!name){toast('اكتب اسمك أول.');return;} if(code.length!==4){toast('الكود 4 حروف.');return;}
-      if(ONLINE==='db'){ queue(()=>dbJoin(code,name)); }
+      lastFxKey='';
+      if(ONLINE==='db') queue(()=>dbJoin(code,name));
       else { MODE='online';ME=1;G=null;VIEW='game';render();peerGuest(code,name); }
       break; }
     case 'resumeOnline': {
       const sv=store.get('tam-online',null); if(!sv) return;
-      MODE='online';ME=sv.me;G=sv.g;VIEW='game';render();
+      MODE='online';ME=sv.me;G=sv.g;VIEW='game';lastFxKey='';render();
       if(ONLINE==='db') dbStart(sv.code,null);
       else if(sv.me===0) peerHost(sv.code);
       else peerGuest(sv.code,(sv.g.players[1]&&sv.g.players[1].name)||cfg.myName);
@@ -912,33 +1313,36 @@ document.addEventListener('click',e=>{
     case 'home': goHome(); break;
     case 'gate': localSeen=G.round+G.phase+v; render(); top0(); break;
 
+    case 'readyMission': submitSim('mission',v,true); top0(); break;
+    case 'simFinish': { const ph=t.dataset.k,k=SIM[ph]; act(g=>{if(g.phase===ph&&g[k].p0&&g[k].p1) FIN[ph](g);}); top0(); break; }
     case 'truth': D.truth=v; if(D.lie===v) D.lie=null; render(); break;
+    case 'rtruth': toggleRank(D.truth,v); if(D.truth.length&&D.lie===D.truth[0]) D.lie=null; render(); break;
+    case 'rguess': toggleRank(D.guess,v); render(); break;
     case 'lie': D.lie=v; render(); break;
     case 'editCustom': D.edit=true; if(D.custom){D.cq=D.custom.q;D.co=D.custom.o.concat(['','','','']).slice(0,4);} render(); break;
     case 'cancelCustom': D.edit=false; render(); break;
     case 'useCustom': {
-      const q=D.cq.trim(), o=D.co.map(s=>s.trim()).filter(Boolean);
+      const q=D.cq.trim(),o=D.co.map(s=>s.trim()).filter(Boolean);
       if(!q){toast('اكتب السؤال.');return;} if(o.length<2){toast('لازم خيارين ع الأقل.');return;}
       D.custom={q,o}; D.edit=false; D.truth=null; D.lie=null; render(); break; }
     case 'submitSecret': act(g=>{const r=g.r;
       if(D.custom){r.custom=D.custom;g.players[r.answerer].custom=0;}
-      r.truth=D.truth; r.hint=D.hint; r.shown=D.hint==='true'?D.truth:D.hint==='lie'?D.lie:null; g.phase='guess';}); top0(); break;
+      r.truth=Array.isArray(D.truth)?D.truth.slice():D.truth; r.hint=D.hint;
+      const top=Array.isArray(D.truth)?D.truth[0]:D.truth;
+      r.shown=D.hint==='true'?top:D.hint==='lie'?D.lie:null; g.phase='guess';}); top0(); break;
     case 'guess': D.guess=v; render(); break;
     case 'bet': D.bet=v; render(); break;
-    case 'submitGuess': act(g=>{g.r.guess=D.guess;g.r.bet=D.bet;g.phase='challenge';}); top0(); break;
+    case 'submitGuess': act(g=>{g.r.guess=Array.isArray(D.guess)?D.guess.slice():D.guess;g.r.bet=D.bet;g.phase='challenge';}); top0(); break;
     case 'challenge': act(g=>{g.r.challenged=true;g.phase='respond';}); break;
     case 'noChallenge': act(g=>{g.r.challenged=false;resolve(g);}); top0(); break;
     case 'accept': act(g=>{g.r.accepted=true;resolve(g);}); top0(); break;
     case 'retreat': act(g=>{g.r.accepted=false;resolve(g);}); top0(); break;
     case 'pick': D.pick=v; render(); break;
     case 'wbet': D.wbet=v; render(); break;
-    case 'submitWho': {
-      const i=v, val={pick:D.pick,bet:D.wbet}, other=G.who['p'+(1-i)];
-      if(MODE==='local'||other) act(g=>{g.who['p'+i]=val; if(g.who.p0&&g.who.p1) resolveWho(g);});
-      else { G.who['p'+i]=val; persist(); render(); NET.sendWho(i,val); }
-      top0(); break; }
-    case 'revealWho': act(g=>{if(g.phase==='who'&&g.who.p0&&g.who.p1) resolveWho(g);}); break;
-    case 'next': if(G.round!==v) return; act(g=>nextRound(g)); top0(); break;
+    case 'submitWho': submitSim('who',v,{pick:D.pick,bet:D.wbet}); top0(); break;
+    case 'potc': D.pot=t.dataset.k; render(); break;
+    case 'submitPot': submitSim('pot',v,D.pot); top0(); break;
+    case 'next': if(G.round!==v||G.phase!==t.dataset.k) return; act(g=>nextRound(g)); top0(); break;
     case 'rematch': {
       const g=newGame(G.players.map(p=>p.name),G.total,G.cats||cfg.cats,G.prize,(G.starter+1)%2);
       if(MODE==='online'){g.code=G.code;g.createdAt=Date.now();} localSeen=''; commit(g); top0(); break; }
@@ -952,10 +1356,7 @@ document.addEventListener('change',e=>{
 render();
 if(window.claude&&typeof window.claude.use==='function'){
   window.claude.use('db').then(x=>{ if(x){db=x;ONLINE='db';} else ONLINE=false; if(VIEW==='home') render(); }).catch(()=>{ONLINE=false;render();});
-} else {
-  ONLINE=typeof Peer!=='undefined'?'peer':false;
-  if(VIEW==='home') render();
-}
+} else { ONLINE=typeof Peer!=='undefined'?'peer':false; if(VIEW==='home') render(); }
 })();
 </script>
 
